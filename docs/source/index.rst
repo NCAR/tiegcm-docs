@@ -1,20 +1,4 @@
-.. tiegcm-docs documentation master file, created by
-   sphinx-quickstart on Sun Dec  3 16:55:24 2023.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+TIEGCMPY
+========
 
-Welcome to tiegcm-docs's documentation!
-=======================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+tiegcmpy is a tool used for TIE-GCM post-processing and plot generation. It offers functionalities for data processing and visualization, particularly in scientific and geospatial domains.
