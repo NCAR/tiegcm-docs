@@ -1,12 +1,21 @@
 File Structure
 ==============
 
-tiegcmpy is organized as follows:
+The tiegcmpy package is structured as follows:
 
-- __init__.py: Initializes the package.
-- convert_units.py: Functions for unit conversions.
-- data_parse.py: Parses and processes data.
-- getoptions.py: Parses CLI arguments.
-- io.py: Handles input/output operations.
-- main.py: The main script for CLI mode.
-- plot_gen.py: Functions for generating plots.
+.. code-block:: none
+
+    ├── src                         # Directory for all tiegcmpy source files
+    │   ├── tiegcmpy          
+    │       ├── __init__.py         # Initialize functions for API
+    │       ├── convert_units.py    # Contains unit conversion functions
+    │       ├── data_parse.py       # Contains data extraction and parsing functions
+    │       ├── plot_gen.py         # Contains plot generation functions
+    │       ├── io.py               # Contains Input Output functions for API
+    │       ├── getoptions.py       # Contains argument parser for the Command Line Interface
+    │       └── main.py             # Main python file to run
+    ├── README.md                   # README   
+    ├── benchmark_template.py       # Template for running benchmark routines     
+    ├── p3postproc.py               # Testing file    
+    ├── requirements.txt            # List of required libraries     
+    └── setup.py                    # PIP package builder
