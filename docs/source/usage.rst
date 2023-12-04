@@ -1,85 +1,89 @@
 Usage
 =====
 
-tiegcmpy can be run in two modes:
+tiegcmpy can be run in two modes: API and Command Line Interface (CLI).
 
-API Mode
---------
+Mode: API
+---------
 
-For use in custom Python scripts or Jupyter notebooks.
+tiegcmpy can be used in custom Python scripts or Jupyter notebooks.
 
-.. code-block:: python
-
-    import tiegcmpy as ty
-
-### Importing tiegcmpy
+**Importing tiegcmpy**
 
 .. code-block:: python
 
     import tiegcmpy as ty
 
-### Loading Datasets
+**Loading Datasets**
 
-#### Loading a single dataset
+- Loading a single dataset:
 
-.. code-block:: python
+  .. code-block:: python
 
-    ty.load_dataset(directory, dataset_filter)
+      ty.load_dataset(directory, dataset_filter)
 
-#### Loading multiple datasets
+- Loading multiple datasets:
 
-.. code-block:: python
+  .. code-block:: python
 
-    ty.load_datasets(directory, dataset_filter)
+      ty.load_datasets(directory, dataset_filter)
 
-### Plot Generation
+**Plot Generation**
 
-The following plots can be made:
+The following plots can be made with tiegcmpy:
 
-- Latitude vs Longitude plots: plt_lat_lon
-- Pressure level vs Variable Value plots: plt_lev_var
-- Pressure level vs Longitude plots: plt_lev_lon
-- Pressure level vs Latitude plots: plt_lev_lat
-- Pressure level vs Time plots: plt_lev_time
-- Latitude vs Time plots: plt_lat_time
+- Latitude vs Longitude plots
+- Pressure level vs Variable Value plots
+- Pressure level vs Longitude plots
+- Pressure level vs Latitude plots
+- Pressure level vs Time plots
+- Latitude vs Time plots
 
-.. note::
+Examples and detailed usage can be found in the Functionality section.
 
-    Look at the functionality section for a list of all plot types with required and optional arguments.
+Mode: CLI (Command Line Interface)
+----------------------------------
 
-Command Line Interface (CLI) Mode
----------------------------------
+tiegcmpy can also be used directly from the command line.
 
-For a command line interface with arguments.
+**Single Plot**
 
-### Single Plot
-
-Example command for generating a single plot:
+Example:
 
 .. code-block:: bash
 
     tiegcmpy --plot_type {plot_type} -dir {directory of datasets} --dataset_filter {primary or secondary files} --output_format {format of output plot} --[Other optional arguments for specific plots]
 
-### Multiple Plots
+**Multiple Plots**
 
-There are several options for generating multiple plots:
+Multiple plots can be generated from different datasets using tiegcmpy's CLI. Here are some examples:
 
-#### Option 1: Interactive Mode
+1. **Interactive Mode for Multiple Plots**
 
-.. code-block:: bash
+   In this mode, tiegcmpy prompts the user to select datasets and plot types interactively.
 
-    tiegcmpy -rec
+   .. code-block:: bash
 
-Follow the instructions on the screen to enter the command mode.
+       tiegcmpy --interactive
 
-#### Option 2: Load dataset for multiple plot generation to multiple files
+   Follow the on-screen prompts to select datasets and specify plot types.
 
-.. code-block:: bash
+2. **Multiple Plot Generation to Multiple Files**
 
-    tiegcmpy -rec -dir {directory of datasets} --dataset_filter {primary or secondary files}
+   This mode allows for the generation of different plots from a single dataset, each saved to a separate file.
 
-#### Option 3: Load dataset for multiple plot generation to a single PDF file
+   .. code-block:: bash
 
-.. code-block:: bash
+       tiegcmpy --plot_types "lat_lon,lev_var" --dir "/path/to/datasets" --output_format "png" --output_dir "/path/to/output"
 
-    tiegcmpy -rec -dir {directory of datasets} --dataset_filter {primary or secondary files} --multiple_output {Output PDF file name}
+   This command generates latitude vs longitude and level vs variable plots for each dataset in the specified directory.
+
+3. **Multiple Plot Generation to a Single PDF File**
+
+   Generate multiple plots from a dataset and compile them into a single PDF file.
+
+   .. code-block:: bash
+
+       tiegcmpy --plot_types "lat_lon,lev_var" --dir "/path/to/datasets" --output_format "pdf" --output_file "combined_plots.pdf"
+
+   This command generates multiple plots and compiles them into 'combined_plots.pdf'.
