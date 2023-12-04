@@ -4,7 +4,9 @@ Installation
 
 Custom
 ------
-**Conda Installation**
+
+Conda Installation
+~~~~~~~~~~~~~~~~~~~
 
 1. Download Miniconda Installer
 
@@ -49,7 +51,8 @@ Custom
 
    - To apply the changes, close and reopen your terminal window.
 
-**Creating Environment**
+Creating Environment
+~~~~~~~~~~~~~~~
 
 Create python 3.8 environment
 
@@ -61,7 +64,8 @@ Create python 3.8 environment
 
     conda create --name tiegcm python=3.8
 
-**Installing tiegcmpy**
+Installing tiegcmpy
+~~~~~~~~~~~~~~~
 
 .. warning::
 
@@ -79,7 +83,8 @@ To install tiegcmpy, run the following command:
 
 NCAR Derecho
 ------------
-**Creating Environment**
+Creating Environment
+~~~~~~~~~~~~~~~
 
 Load Conda module
 
@@ -97,7 +102,8 @@ Create python 3.8 environment
 
     conda create --name tiegcm python=3.8
 
-**Activate Environment**
+Activate Environment
+~~~~~~~~~~~~~~~
 
 .. note::
 
@@ -107,7 +113,8 @@ Create python 3.8 environment
 
     conda activate tiegcm
 
-**Installing tiegcmpy**
+Installing tiegcmpy
+~~~~~~~~~~~~~~~
 
 .. warning::
 
@@ -125,7 +132,8 @@ To install tiegcmpy, run the following command:
 
 NASA Pleiades
 -------------
-**Creating Environment**
+Creating Environment
+~~~~~~~~~~~~~~~
 
 Load Conda module
 
@@ -148,7 +156,8 @@ Create python 3.8 environment
 
     conda create -n tiegcm python=3.8
 
-**Activate Environment**
+Activate Environment
+~~~~~~~~~~~~~~~
 
 .. note::
 
@@ -159,7 +168,8 @@ Create python 3.8 environment
 
     conda activate my_tiegcm
 
-**Installing tiegcmpy**
+Installing tiegcmpy
+~~~~~~~~~~~~~~~
 
 .. warning::
 
