@@ -12,6 +12,7 @@ Contents
    installation
    requirements
    usage
-   functionality
+   plot_functions
+   data_functions
    file_structure
    license
