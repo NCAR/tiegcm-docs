@@ -1,16 +1,14 @@
-Functionality
+Ploting Routines
 =============
 
-tiegcmpy provides a range of functions for data visualization and analysis. Below are the key functions along with their detailed parameters and usage examples.
+tiegcmpy provides a range of functions for data visualization. Below are the key plotting routines along with their detailed parameters and usage examples.
 
 Latitude vs Longitude Contour Plots
 -----------------------------------
 
 This function generates a contour plot of a variable against latitude and longitude.
 
-.. code-block:: python
-
-    ty.plt_lat_lon(datasets, variable_name, time=None, mtime=None, level=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, latitude_minimum=None, latitude_maximum=None, longitude_minimum=None, longitude_maximum=None, localtime_minimum=None, localtime_maximum=None)
+.. function:: plt_lat_lon(datasets, variable_name, time=None, mtime=None, level=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, latitude_minimum=None, latitude_maximum=None, longitude_minimum=None, longitude_maximum=None, localtime_minimum=None, localtime_maximum=None)
 
 Parameters:
     - datasets (xarray): The loaded dataset/s using xarray.
@@ -47,9 +45,7 @@ Pressure Level vs Variable Line Plot
 
 This function generates a line plot of a variable at a specific latitude and optional longitude, time, and local time.
 
-.. code-block:: python
-
-    ty.plt_lev_var(datasets, variable_name, latitude, time=None, mtime=None, longitude=None, localtime=None, variable_unit=None, level_minimum=None, level_maximum=None)
+.. function:: plt_lev_var(datasets, variable_name, latitude, time=None, mtime=None, longitude=None, localtime=None, variable_unit=None, level_minimum=None, level_maximum=None)
 
 Parameters:
     - datasets (xarray): The loaded dataset/s using xarray.
@@ -84,9 +80,7 @@ Pressure level vs Longitude Contour Plot
 
 This function generates a contour plot of a variable at a specific latitude against longitude, with optional time and local time.
 
-.. code-block:: python
-
-    ty.plt_lev_lon(datasets, variable_name, latitude, time=None, mtime=None, variable_unit=None, contour_intervals=20, contour_value=None, level_minimum=None, level_maximum=None, longitude_minimum=None, longitude_maximum=None, localtime_minimum=None, localtime_maximum=None)
+.. function:: plt_lev_lon(datasets, variable_name, latitude, time=None, mtime=None, variable_unit=None, contour_intervals=20, contour_value=None, level_minimum=None, level_maximum=None, longitude_minimum=None, longitude_maximum=None, localtime_minimum=None, localtime_maximum=None)
 
 Parameters:
     - datasets (xarray): The loaded dataset(s) using xarray.
@@ -120,9 +114,7 @@ Pressure Level vs Latitude Contour Plot
 
 This function generates a contour plot of a variable against pressure level and latitude.
 
-.. code-block:: python
-
-    ty.plt_lev_lat(datasets, variable_name, longitude, time=None, mtime=None, localtime=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, level_minimum=None, level_maximum=None, latitude_minimum=None, latitude_maximum=None)
+.. function:: plt_lev_lat(datasets, variable_name, longitude, time=None, mtime=None, localtime=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, level_minimum=None, level_maximum=None, latitude_minimum=None, latitude_maximum=None)
 
 Parameters:
     - datasets (xarray): The loaded dataset/s using xarray.
@@ -157,9 +149,7 @@ Pressure Level vs Time Contour Plot
 
 This function creates a contour plot of a variable against pressure level and time.
 
-.. code-block:: python
-
-    ty.plt_lev_time(datasets, variable_name, latitude, longitude=None, localtime=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, level_minimum=None, level_maximum=None, time_minimum=None, time_maximum=None)
+.. function:: plt_lev_time(datasets, variable_name, latitude, longitude=None, localtime=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, level_minimum=None, level_maximum=None, time_minimum=None, time_maximum=None)
 
 Parameters:
     - datasets (xarray): The loaded dataset/s using xarray.
@@ -194,9 +184,7 @@ Latitude vs Time Contour Plot
 
 This function creates a contour plot of a variable against latitude and time.
 
-.. code-block:: python
-
-    ty.plt_lat_time(datasets, variable_name, level, longitude=None, localtime=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, latitude_minimum=None, latitude_maximum=None, time_minimum=None, time_maximum=None)
+.. function:: plt_lat_time(datasets, variable_name, level, longitude=None, localtime=None, variable_unit=None, contour_intervals=None, contour_value=None, coastlines=False, latitude_minimum=None, latitude_maximum=None, time_minimum=None, time_maximum=None)
 
 Parameters:
     - datasets (xarray): The loaded dataset/s using xarray.

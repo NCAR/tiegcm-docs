@@ -1,3 +1,6 @@
+Data Parsing Functions
+=============
+
 .. function:: time_list(datasets)
 
     Compiles and returns a list of all timestamps present in the provided datasets. 
