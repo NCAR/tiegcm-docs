@@ -266,7 +266,7 @@ Returns:
                 Returns None if no corresponding mtime is found.
 
 
-Agerage Z height
+Average Z height
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 This function compute the average Z value for a given set of lat, lon, and lev from a dataset.

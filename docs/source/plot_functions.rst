@@ -19,7 +19,11 @@ Parameters:
     - variable_unit (str, optional): The desired unit of the variable.
     - contour_intervals (int, optional): The number of contour intervals. Defaults to 20.
     - contour_value (int, optional): The value between each contour interval.
+    - cmap_color (str, optional): The color map of the conutour. Defaults to 'viridis' for Density,'inferno' for Temp, 'bwr' for Wind, 'viridis' for undefined.
+    - line_color (str, optional): The color for all lines in the on the plot. Defaults to 'white'.
     - coastlines (bool, optional): Shows coastlines on the plot. Defaults to False.
+    - nightshade (bool, optional): Shows nighshade on the plot. Defaults to False.
+    - gm_equator (bool, optional): Shows geomagmetic equator on the plot. Defaults to False.
     - latitude_minimum (float, optional): Minimum latitude to slice plots. Defaults to -87.5.
     - latitude_maximum (float, optional): Maximum latitude to slice plots. Defaults to 87.5.
     - longitude_minimum (float, optional): Minimum longitude to slice plots. Defaults to -180.
@@ -91,6 +95,8 @@ Parameters:
     - variable_unit (str, optional): The desired unit of the variable.
     - contour_intervals (int, optional): The number of contour intervals. Defaults to 20.
     - contour_value (int, optional): The value between each contour interval.
+    - cmap_color (str, optional): The color map of the conutour. Defaults to 'viridis' for Density,'inferno' for Temp, 'bwr' for Wind, 'viridis' for undefined.
+    - line_color (str, optional): The color for all lines in the on the plot. Defaults to 'white'.
     - level_minimum (float, optional): Minimum level value for the plot. Defaults to -6.75.
     - level_maximum (float, optional): Maximum level value for the plot. Defaults to 6.75.
     - longitude_minimum (float, optional): Minimum longitude value for the plot. Defaults to -180.
@@ -126,6 +132,8 @@ Parameters:
     - variable_unit (str, optional): The desired unit of the variable.
     - contour_intervals (int, optional): The number of contour intervals. Defaults to 20.
     - contour_value (int, optional): The value between each contour interval.
+    - cmap_color (str, optional): The color map of the conutour. Defaults to 'viridis' for Density,'inferno' for Temp, 'bwr' for Wind, 'viridis' for undefined.
+    - line_color (str, optional): The color for all lines in the on the plot. Defaults to 'white'.
     - coastlines (bool, optional): Shows coastlines on the plot. Defaults to False.
     - level_minimum (float, optional): Minimum level value for the plot.
     - level_maximum (float, optional): Maximum level value for the plot.
@@ -160,6 +168,8 @@ Parameters:
     - variable_unit (str, optional): The desired unit of the variable.
     - contour_intervals (int, optional): The number of contour intervals. Defaults to 20.
     - contour_value (int, optional): The value between each contour interval.
+    - cmap_color (str, optional): The color map of the conutour. Defaults to 'viridis' for Density,'inferno' for Temp, 'bwr' for Wind, 'viridis' for undefined.
+    - line_color (str, optional): The color for all lines in the on the plot. Defaults to 'white'.
     - coastlines (bool, optional): Shows coastlines on the plot. Defaults to False.
     - level_minimum (float, optional): Minimum level value for the plot.
     - level_maximum (float, optional): Maximum level value for the plot.
@@ -195,6 +205,8 @@ Parameters:
     - variable_unit (str, optional): The desired unit of the variable.
     - contour_intervals (int, optional): The number of contour intervals. Defaults to 20.
     - contour_value (int, optional): The value between each contour interval.
+    - cmap_color (str, optional): The color map of the conutour. Defaults to 'viridis' for Density,'inferno' for Temp, 'bwr' for Wind, 'viridis' for undefined.
+    - line_color (str, optional): The color for all lines in the on the plot. Defaults to 'white'.
     - coastlines (bool, optional): Shows coastlines on the plot. Defaults to False.
     - latitude_minimum (float, optional): Minimum latitude to slice plots.
     - latitude_maximum (float, optional): Maximum latitude to slice plots.
