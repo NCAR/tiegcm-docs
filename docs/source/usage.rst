@@ -8,14 +8,14 @@ Mode: API
 
 tiegcmpy can be used in custom Python scripts or Jupyter notebooks.
 
-**Importing tiegcmpy**
-
+Importing tiegcmpy
+~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: python
 
     import tiegcmpy as ty
 
-**Loading Datasets**
-
+Loading Datasets
+~~~~~~~~~~~~~~~~~~~~~
 Loading a dataset/datasets:
 
   .. note::
@@ -28,7 +28,8 @@ Loading a dataset/datasets:
       ty.load_datasets(directory/file, dataset_filter)
 
 
-**Plot Generation**
+Plot Generation
+~~~~~~~~~~~~~~~~~~~~~
 
 The following plots can be made with tiegcmpy:
 
