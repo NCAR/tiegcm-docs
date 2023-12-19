@@ -16,17 +16,17 @@ tiegcmpy can be used in custom Python scripts or Jupyter notebooks.
 
 **Loading Datasets**
 
-- Loading a single dataset:
+Loading a dataset/datasets:
+
+  .. note::
+
+      For the inbuilt plotting routines only this method can be used to load the NetCDF datasets.
+
 
   .. code-block:: python
 
-      ty.load_dataset(directory, dataset_filter)
+      ty.load_datasets(directory/file, dataset_filter)
 
-- Loading multiple datasets:
-
-  .. code-block:: python
-
-      ty.load_datasets(directory, dataset_filter)
 
 **Plot Generation**
 
