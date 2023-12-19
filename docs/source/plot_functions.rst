@@ -260,8 +260,32 @@ This command generates a contour plot of a variable against latitude and longitu
        tiegcmpy -plt lat_lon -var variable_name -time time -zp level -dir directory/of/datasets --dataset_filter prim_or_sech --output_format format_of_output_plot
 
 
-**Arguments**
+Arguments
+""""""""""
+These are the list of arguments for the contour plot of a variable against latitude and longitude.
 
+Dataset Input/Output
+''''''''''
+``-ds DATASET``, ``--dataset DATASET``
+  Path to the singular dataset.
+
+``-dir DIRECTORY``, ``--directory DIRECTORY``
+  Directory path containing the datasets.
+
+``-dsf {prim,sech}``, ``--dataset_filter {prim,sech}``
+  Filter to load datasets.
+
+``-outdir OUTPUT_DIRECTORY``, ``--output_directory OUTPUT_DIRECTORY``
+  Directory to save the plots. Default: Current working directory.
+
+``-fout {jpeg,pdf}``, ``--output_format {jpeg,pdf}``
+  Format to save the plots. Default: jpeg.
+
+``-stdout STANDARD_OUTPUT``, ``--standard_output STANDARD_OUTPUT``
+  Custom file name without extension.
+
+Plotting
+''''''''''
 ``-var VARIABLE_NAME``, ``--variable_name VARIABLE_NAME``
   Name of the variable to be plotted.
 
@@ -274,6 +298,8 @@ This command generates a contour plot of a variable against latitude and longitu
 ``-zp LEVEL``, ``--level LEVEL``
   Selected lev/ilev for the plot.
 
+Optional
+''''''''''
 ``-unit VARIABLE_UNIT``, ``--variable_unit VARIABLE_UNIT``
   Selected unit of a given variable for the plot.
 
@@ -325,8 +351,32 @@ This command generates a line plot of a variable at a specific latitude and opti
 
        tiegcmpy -plt lev_var -var variable_name -time time -lat latitude -lon longitude -dir directory/of/datasets --dataset_filter prim_or_sech --output_format format_of_output_plot
 
-**Arguments**
+Arguments
+""""""""""
+These are the list of arguments for the line plot of a variable at a specific latitude and optional longitude, time, and local time.
 
+Dataset Input/Output
+''''''''''
+``-ds DATASET``, ``--dataset DATASET``
+  Path to the singular dataset.
+
+``-dir DIRECTORY``, ``--directory DIRECTORY``
+  Directory path containing the datasets.
+
+``-dsf {prim,sech}``, ``--dataset_filter {prim,sech}``
+  Filter to load datasets.
+
+``-outdir OUTPUT_DIRECTORY``, ``--output_directory OUTPUT_DIRECTORY``
+  Directory to save the plots. Default: Current working directory.
+
+``-fout {jpeg,pdf}``, ``--output_format {jpeg,pdf}``
+  Format to save the plots. Default: jpeg.
+
+``-stdout STANDARD_OUTPUT``, ``--standard_output STANDARD_OUTPUT``
+  Custom file name without extension.
+
+Plotting
+''''''''''
 ``-var VARIABLE_NAME``, ``--variable_name VARIABLE_NAME``
   Name of the variable to be plotted.
 
@@ -345,6 +395,8 @@ This command generates a line plot of a variable at a specific latitude and opti
 ``-ut LOCALTIME``, ``--localtime LOCALTIME``
   Selected localtime / longitude for the plot.
 
+Optional
+''''''''''
 ``-unit VARIABLE_UNIT``, ``--variable_unit VARIABLE_UNIT``
   Selected unit of a given variable for the plot.
 
@@ -363,8 +415,32 @@ This command generates a contour plot of a variable at a specific latitude again
 
        tiegcmpy -plt lev_lon -var variable_name -time time -lat latitude -dir directory/of/datasets --dataset_filter prim_or_sech --output_format format_of_output_plot
   
-**Arguments**
+Arguments
+""""""""""
+These are the list of arguments for the contour plot of a variable at a specific latitude against longitude, with optional time and local time.
 
+Dataset Input/Output
+''''''''''
+``-ds DATASET``, ``--dataset DATASET``
+  Path to the singular dataset.
+
+``-dir DIRECTORY``, ``--directory DIRECTORY``
+  Directory path containing the datasets.
+
+``-dsf {prim,sech}``, ``--dataset_filter {prim,sech}``
+  Filter to load datasets.
+
+``-outdir OUTPUT_DIRECTORY``, ``--output_directory OUTPUT_DIRECTORY``
+  Directory to save the plots. Default: Current working directory.
+
+``-fout {jpeg,pdf}``, ``--output_format {jpeg,pdf}``
+  Format to save the plots. Default: jpeg.
+
+``-stdout STANDARD_OUTPUT``, ``--standard_output STANDARD_OUTPUT``
+  Custom file name without extension.
+
+Plotting
+''''''''''
  ``-var VARIABLE_NAME``, ``--variable_name VARIABLE_NAME``
   Name of the variable to be plotted.
 
@@ -377,6 +453,8 @@ This command generates a contour plot of a variable at a specific latitude again
 ``-lat LATITUDE``, ``--latitude LATITUDE``
   Selected latitude for the plot.
 
+Optional
+''''''''''
 ``-unit VARIABLE_UNIT``, ``--variable_unit VARIABLE_UNIT``
   Selected unit of a given variable for the plot.
 
@@ -418,9 +496,33 @@ This command generates a contour plot of a variable against pressure level and l
 .. code-block:: bash
 
        tiegcmpy -plt lev_lat -var variable_name -time time -lon longitude -dir directory/of/datasets --dataset_filter prim_or_sech --output_format format_of_output_plot
-  
-**Arguments**
 
+Arguments
+""""""""""
+These are the list of arguments for the contour plot of a variable against pressure level and latitude.
+
+Dataset Input/Output
+''''''''''
+``-ds DATASET``, ``--dataset DATASET``
+  Path to the singular dataset.
+
+``-dir DIRECTORY``, ``--directory DIRECTORY``
+  Directory path containing the datasets.
+
+``-dsf {prim,sech}``, ``--dataset_filter {prim,sech}``
+  Filter to load datasets.
+
+``-outdir OUTPUT_DIRECTORY``, ``--output_directory OUTPUT_DIRECTORY``
+  Directory to save the plots. Default: Current working directory.
+
+``-fout {jpeg,pdf}``, ``--output_format {jpeg,pdf}``
+  Format to save the plots. Default: jpeg.
+
+``-stdout STANDARD_OUTPUT``, ``--standard_output STANDARD_OUTPUT``
+  Custom file name without extension.
+
+Plotting
+''''''''''
  ``-var VARIABLE_NAME``, ``--variable_name VARIABLE_NAME``
   Name of the variable to be plotted.
 
@@ -436,6 +538,8 @@ This command generates a contour plot of a variable against pressure level and l
 ``-ut LOCALTIME``, ``--localtime LOCALTIME``
   Selected localtime / longitude for the plot.
 
+Optional
+''''''''''
 ``-unit VARIABLE_UNIT``, ``--variable_unit VARIABLE_UNIT``
   Selected unit of a given variable for the plot.
 
@@ -472,8 +576,32 @@ This command creates a contour plot of a variable against pressure level and tim
 
        tiegcmpy -plt lev_time -var variable_name -lat latitude -lon longitude -dir directory/of/datasets --dataset_filter prim_or_sech --output_format format_of_output_plot
   
-**Arguments** 
+Arguments
+""""""""""
+These are the list of arguments for the contour plot of a variable against pressure level and time.
 
+Dataset Input/Output
+''''''''''
+``-ds DATASET``, ``--dataset DATASET``
+  Path to the singular dataset.
+
+``-dir DIRECTORY``, ``--directory DIRECTORY``
+  Directory path containing the datasets.
+
+``-dsf {prim,sech}``, ``--dataset_filter {prim,sech}``
+  Filter to load datasets.
+
+``-outdir OUTPUT_DIRECTORY``, ``--output_directory OUTPUT_DIRECTORY``
+  Directory to save the plots. Default: Current working directory.
+
+``-fout {jpeg,pdf}``, ``--output_format {jpeg,pdf}``
+  Format to save the plots. Default: jpeg.
+
+``-stdout STANDARD_OUTPUT``, ``--standard_output STANDARD_OUTPUT``
+  Custom file name without extension.
+
+Plotting
+''''''''''
 ``-lat LATITUDE``, ``--latitude LATITUDE``
   Selected latitude for the plot.
 
@@ -482,6 +610,9 @@ This command creates a contour plot of a variable against pressure level and tim
 
 ``-ut LOCALTIME``, ``--localtime LOCALTIME``
   Selected localtime / longitude for the plot.
+
+Optional
+''''''''''
 
 ``-unit VARIABLE_UNIT``, ``--variable_unit VARIABLE_UNIT``
   Selected unit of a given variable for the plot.
@@ -515,8 +646,32 @@ This command creates a contour plot of a variable against latitude and time.
 
        tiegcmpy -plt lat_time -var variable_name -zp level -lon longitude -dir directory/of/datasets --dataset_filter prim_or_sech --output_format format_of_output_plot
   
-**Arguments** 
+Arguments
+""""""""""
+These are the list of arguments for the contour plot of a variable against latitude and time.
 
+Dataset Input/Output
+''''''''''
+``-ds DATASET``, ``--dataset DATASET``
+  Path to the singular dataset.
+
+``-dir DIRECTORY``, ``--directory DIRECTORY``
+  Directory path containing the datasets.
+
+``-dsf {prim,sech}``, ``--dataset_filter {prim,sech}``
+  Filter to load datasets.
+
+``-outdir OUTPUT_DIRECTORY``, ``--output_directory OUTPUT_DIRECTORY``
+  Directory to save the plots. Default: Current working directory.
+
+``-fout {jpeg,pdf}``, ``--output_format {jpeg,pdf}``
+  Format to save the plots. Default: jpeg.
+
+``-stdout STANDARD_OUTPUT``, ``--standard_output STANDARD_OUTPUT``
+  Custom file name without extension.
+
+Plotting
+''''''''''
 ``-zp LEVEL``, ``--level LEVEL``
   Selected lev/ilev for the plot.
 
@@ -526,6 +681,8 @@ This command creates a contour plot of a variable against latitude and time.
 ``-ut LOCALTIME``, ``--localtime LOCALTIME``
   Selected localtime / longitude for the plot.
 
+Optional
+''''''''''
 ``-unit VARIABLE_UNIT``, ``--variable_unit VARIABLE_UNIT``
   Selected unit of a given variable for the plot.
 
