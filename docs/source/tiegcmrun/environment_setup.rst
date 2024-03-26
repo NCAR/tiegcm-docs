@@ -86,7 +86,7 @@ Activating the environment.
     conda activate tiegcm
 
 Python Package Requirements
-----------------------------
+~~~~~~~~~~~~~~~
 
 Ensure your Conda environment is activated before proceeding. Installation of Tiegcmrun and its dependencies is done via pip, using the `requirements.txt` file located in the Tiegcmrun model directory:
 
@@ -153,7 +153,7 @@ Activating the environment.
     source activate my_tiegcm
 
 Python Package Requirements
-----------------------------
+~~~~~~~~~~~~~~~
 
 Ensure your Conda environment is activated before proceeding. Installation of Tiegcmrun and its dependencies is done via pip, using the `requirements.txt` file located in the Tiegcmrun model directory:
 

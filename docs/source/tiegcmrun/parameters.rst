@@ -2,7 +2,7 @@
 Parameters
 =====
 
-Model Files
+Model File Parameters
 ----------------
 
 This outlines the configuration for various directories and files required for running the model. These configurations are categorized based on user expertise levels: Basic, Intermediate, and Expert.
@@ -74,7 +74,7 @@ Expert-level parameters are intended for advanced users who require detailed con
     - **Warning:** Modify only if you are porting the model to a new machine.
   
 
-Model Specifications
+Model Specification Parameters
 ----------------
 
 This delineates the model specifications segregated by user expertise levels: Bench/Basic (for all users), Intermediate, and Expert. These specifications are crucial for setting up the model's spatial configuration and determining its resolution and coverage.
@@ -379,10 +379,10 @@ PBS Job Parameters
 
 This document details the configuration for PBS job parameters required for running the model on Derecho and Pleiades supercomputers. Parameters are organized by the system and user expertise levels: Basic, Intermediate, and Expert.
 
-Derecho System Configuration
+Derecho System Parameters
 """"""""""""""""""""
 
-Basic Configuration
+Basic Parameters
 ''''''''''
 
 **Project Code**
@@ -395,7 +395,7 @@ Basic Configuration
     - **Default:** 12:00:00
     - **Warning:** Maximum walltime is 12:00:00.
 
-Intermediate Configuration
+Intermediate Parameters
 ''''''''''
 
 **PBS Queue Name**
@@ -409,7 +409,7 @@ Intermediate Configuration
     - **Default:** regular
     - **Valid Options:** [premium, regular, economy, preempt]
 
-Expert Configuration
+Expert Parameters
 ''''''''''
 
 **Select (Number of Nodes)**
@@ -443,10 +443,10 @@ Expert Configuration
     - **Prompt:** Additional settings or env variables
     - **Description:** Any extra PBS directives or environment variables to be set.
 
-Pleiades System Configuration
+Pleiades System Parameters
 """"""""""""""""""""
 
-Basic Configuration
+Basic Parameters
 ''''''''''
 
 **PBS Queue Name**
@@ -460,7 +460,7 @@ Basic Configuration
     - **Default:** 12:00:00
     - **Warning:** Maximum walltime on normal queue is 12:00:00.
 
-Expert Configuration
+Expert Parameters
 ''''''''''
 
 **Model (System on PFE)**
