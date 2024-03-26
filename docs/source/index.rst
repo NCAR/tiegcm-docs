@@ -23,6 +23,11 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: TIEGCM Run
+   :caption: TIEGCMrun
 
    tiegcmrun/index
+   tiegcmrun/environment_setup
+   tiegcmrun/usage
+   tiegcmrun/parameters
+   tiegcmrun/file_structure
+
