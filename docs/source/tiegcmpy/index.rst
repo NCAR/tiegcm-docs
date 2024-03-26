@@ -13,16 +13,11 @@ Contents
    :maxdepth: 2
    :caption: TIEGCMPY
 
-   tiegcmpy/installation
-   tiegcmpy/requirements
-   tiegcmpy/usage
-   tiegcmpy/plot_functions
-   tiegcmpy/data_functions
-   tiegcmpy/file_structure
+   installation
+   requirements
+   usage
+   plot_functions
+   data_functions
+   file_structure
 
 
-.. toctree::
-   :maxdepth: 2
-   :caption: TIEGCM Run
-
-   tiegcmrun/index
