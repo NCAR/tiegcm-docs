@@ -5,7 +5,7 @@ This page details instructions for two tools.
 
 TIEGCMrun
 --------
-TIEGCMrun is a tool used for TIE-GCM pre-processing. It offers functionalities for compilation, Input file creation, PBS job generation and Job executino.
+TIEGCMrun is a tool used for TIE-GCM pre-processing. It offers functionalities for compilation, Input file creation, PBS job generation and Job execution.
 
 TIEGCMpy
 --------
