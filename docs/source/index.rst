@@ -7,13 +7,15 @@ tiegcmpy is a tool used for TIE-GCM post-processing and plot generation. It offe
 Contents
 --------
 
+
+
 .. toctree::
    :maxdepth: 2
+   :caption: TIEGCMPY
 
-   installation
-   requirements
-   usage
-   plot_functions
-   data_functions
-   file_structure
-   license
+   tiegcmpy/installation
+   tiegcmpy/requirements
+   tiegcmpy/usage
+   tiegcmpy/plot_functions
+   tiegcmpy/data_functions
+   tiegcmpy/file_structure
