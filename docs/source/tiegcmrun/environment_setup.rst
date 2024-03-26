@@ -135,8 +135,9 @@ After setting up the modules, proceed to create and activate a Conda environment
 .. note::
 
     The name of the conda environment in this example is ``tiegcm``.
-.. warning::
-    NASA systems such as Pleiades set the custom environment names to ``my_{custom_name}``, in this example its set to ``my_tiegcm``.
+    
+    .. warning::
+        NASA systems such as Pleiades set the custom environment names to ``my_{custom_name}``, in this example its set to ``my_tiegcm``.
         
 .. code-block:: bash
 
