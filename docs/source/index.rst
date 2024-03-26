@@ -16,6 +16,17 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+   :caption: TIEGCMrun
+
+   tiegcmrun/index
+   tiegcmrun/environment_setup
+   tiegcmrun/usage
+   tiegcmrun/parameters
+   tiegcmrun/file_structure
+
+   
+.. toctree::
+   :maxdepth: 2
    :caption: TIEGCMPY
 
    tiegcmpy/index
@@ -26,14 +37,4 @@ Contents
    tiegcmpy/data_functions
    tiegcmpy/file_structure
 
-
-.. toctree::
-   :maxdepth: 2
-   :caption: TIEGCMrun
-
-   tiegcmrun/index
-   tiegcmrun/environment_setup
-   tiegcmrun/usage
-   tiegcmrun/parameters
-   tiegcmrun/file_structure
 
