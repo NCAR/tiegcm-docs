@@ -7,9 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'tiegcm-docs'
-copyright = '2023, Nikhil Rao'
+copyright = '2024, Nikhil Rao'
 author = 'Nikhil Rao'
-release = '0.1.1'
+release = '1.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
