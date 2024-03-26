@@ -25,6 +25,7 @@ The script aims to streamline the setup process, making it more user-friendly by
 .. warning::
 
     Environment Variables is currently facing an error with setting `TIEGCMHOME`. Once ``setEnvironment.sh`` is run, set `TIEGCMHOME` environment variable.
+    
     .. code-block:: bash
 
         export TIEGCMHOME=<<path_to_TIEGCMHOME>>
