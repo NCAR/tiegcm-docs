@@ -18,7 +18,7 @@ Contents
    :maxdepth: 2
    :caption: TIEGCMPY
 
-   tiegcmrun/index
+   tiegcmpy/index
    tiegcmpy/installation
    tiegcmpy/requirements
    tiegcmpy/usage
