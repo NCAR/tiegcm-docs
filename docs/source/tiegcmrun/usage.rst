@@ -70,12 +70,10 @@ For custom simulations, you can move to the desired directory and simply run tie
 
     python $TIEGCMHOME/tiegcmrun/tiegcmrun.py
 
-You can also provide a JSON file with custom options using the `--options_path` flag to further customize the simulation:
-
 Benchmark Run
 """"""""""
 
-Benchmark runs are predefined simulations that allow users to test and compare the performance and output of the TIE-GCM tool. To execute a benchmark run, move to the directory where you wish to have the run and use the following command:
+Benchmark runs are predefined simulations that allow users to test and compare the performance and output of TIE-GCM. To execute a benchmark run, move to the directory where you wish to have the run and use the following command:
 
 .. code-block:: bash
 
