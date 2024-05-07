@@ -2,7 +2,7 @@ Introduction
 =================================================================
 
 Thermosphere Ionosphere Electrodynamics General Circulation Model
-=================================================================
+--------------------------------
 
 Functional Description - TIE-GCM
 --------------------------------
