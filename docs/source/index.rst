@@ -15,7 +15,7 @@ Contents
    :maxdepth: 2
    :caption: TIEGCM
 
-   tiegcm/index
+   tiegcm/intro
    tiegcm/release_notes
    tiegcm/environment_setup
    tiegcm/quickstart
