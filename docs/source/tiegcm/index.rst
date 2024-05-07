@@ -1,3 +1,6 @@
+Introduction
+=================================================================
+
 Thermosphere Ionosphere Electrodynamics General Circulation Model
 =================================================================
 
