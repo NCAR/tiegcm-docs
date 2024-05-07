@@ -1,15 +1,12 @@
-TIEGCM
-========
+Thermosphere Ionosphere Electrodynamics General Circulation Model
+==================================
 
-This page details instructions for two tools.
+Description - TIE-GCM
+--------------------------------
 
-TIEGCMrun
---------
-TIEGCMrun is a tool used for TIE-GCM pre-processing. It offers functionalities for compilation, Input file creation, PBS job generation and Job execution.
+The NCAR Thermosphere-Ionosphere-Electrodynamics General Circulation Model (TIE-GCM) is a comprehensive, first-principles, three-dimensional, non-linear representation of the coupled thermosphere and ionosphere system that includes a self-consistent solution of the middle and low-latitude dynamo field.
 
-TIEGCMpy
---------
-tiegcmpy is a tool used for TIE-GCM post-processing and plot generation. It offers functionalities for data processing and visualization, particularly in scientific and geospatial domains.
+The model solves the three-dimensional momentum, energy and continuity equations for neutral and ion species at each time step, using a semi-implicit, fourth-order, centered finite difference scheme on each pressure surface in a staggered vertical grid. It can be run in either serial or parallel mode on a variety of platforms, including Linux workstations and supercomputers. The time step is typically 120 s.
 
 Contents
 --------
@@ -30,7 +27,5 @@ Contents
    tiegcm/model_source
    tiegcm/benchmark
 
-   tiegcmpy/data_functions
-   tiegcmpy/file_structure
 
 
