@@ -16,6 +16,23 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+   :caption: TIEGCM
+
+   tiegcm/index
+   tiegcm/release_notes
+   tiegcm/environment_setup
+   tiegcm/quickstart
+   tiegcm/directory_structure
+   tiegcm/grid_struct_res
+   tiegcm/parameters
+   tiegcm/model_out
+   tiegcm/saving_diag
+   tiegcm/model_source
+   tiegcm/benchmark
+
+
+.. toctree::
+   :maxdepth: 2
    :caption: TIEGCMrun
 
    tiegcmrun/index
