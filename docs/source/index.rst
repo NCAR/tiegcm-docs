@@ -30,27 +30,6 @@ Contents
    tiegcm/model_source
    tiegcm/benchmark
 
-
-.. toctree::
-   :maxdepth: 2
-   :caption: TIEGCMrun
-
-   tiegcmrun/index
-   tiegcmrun/environment_setup
-   tiegcmrun/usage
-   tiegcmrun/parameters
-   tiegcmrun/file_structure
-
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: TIEGCMPY
-
-   tiegcmpy/index
-   tiegcmpy/installation
-   tiegcmpy/requirements
-   tiegcmpy/usage
-   tiegcmpy/plot_functions
    tiegcmpy/data_functions
    tiegcmpy/file_structure
 
