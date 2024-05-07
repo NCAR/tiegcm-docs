@@ -1,4 +1,4 @@
-GRID STRUCTURE AND RESOLUTION
+Grid Structure and Resolution
 =============================
 
 The TIEGCM can be configured for two spatial/temporal resolutions (use the modelres shell variable in the job script to set the model resolution):

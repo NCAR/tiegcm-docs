@@ -1,4 +1,4 @@
-Usage
+Quickstart
 =====
 
 The TIEGCM tool, tiegcmrun, offers a flexible command-line interface for running TIE-GCM simulations. This document outlines the various commands and options available to users, enabling them to execute simulations, compile the model, and customize runs according to their requirements.
