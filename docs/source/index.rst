@@ -1,40 +1,31 @@
-TIEGCM
-========
+Thermosphere Ionosphere Electrodynamics General Circulation Model
+==================================
 
-This page details instructions for two tools.
+Description - TIE-GCM
+--------------------------------
 
-TIEGCMrun
---------
-TIEGCMrun is a tool used for TIE-GCM pre-processing. It offers functionalities for compilation, Input file creation, PBS job generation and Job execution.
+The NCAR Thermosphere-Ionosphere-Electrodynamics General Circulation Model (TIE-GCM) is a comprehensive, first-principles, three-dimensional, non-linear representation of the coupled thermosphere and ionosphere system that includes a self-consistent solution of the middle and low-latitude dynamo field.
 
-TIEGCMpy
---------
-tiegcmpy is a tool used for TIE-GCM post-processing and plot generation. It offers functionalities for data processing and visualization, particularly in scientific and geospatial domains.
+The model solves the three-dimensional momentum, energy and continuity equations for neutral and ion species at each time step, using a semi-implicit, fourth-order, centered finite difference scheme on each pressure surface in a staggered vertical grid. It can be run in either serial or parallel mode on a variety of platforms, including Linux workstations and supercomputers. The time step is typically 120 s.
 
 Contents
 --------
 
 .. toctree::
    :maxdepth: 2
-   :caption: TIEGCMrun
+   :caption: TIEGCM
 
-   tiegcmrun/index
-   tiegcmrun/environment_setup
-   tiegcmrun/usage
-   tiegcmrun/parameters
-   tiegcmrun/file_structure
+   tiegcm/index
+   tiegcm/release_notes
+   tiegcm/environment_setup
+   tiegcm/quickstart
+   tiegcm/directory_structure
+   tiegcm/grid_struct_res
+   tiegcm/parameters
+   tiegcm/model_out
+   tiegcm/saving_diag
+   tiegcm/model_source
+   tiegcm/benchmark
 
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: TIEGCMPY
-
-   tiegcmpy/index
-   tiegcmpy/installation
-   tiegcmpy/requirements
-   tiegcmpy/usage
-   tiegcmpy/plot_functions
-   tiegcmpy/data_functions
-   tiegcmpy/file_structure
 
 
