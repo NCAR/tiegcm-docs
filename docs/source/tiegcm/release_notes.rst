@@ -10,13 +10,18 @@ Release Notes for TIEGCM 3.0
 This is a summary of modifications made to the TIEGCM since the release of TIEGCM 2.0 (March 2016).
 
 
-Utility Tool
+Utility Tools
 ------------
 
 TIEGCMrun
-^^^^^^^
+------------
 
-Tiegcmrun is a Python script (in the tiegcmrun/ directory) that is used to compile and execute tiegcm in an automated fashion. Tiegcmrun can be executed interactively on the command line. See example of usage under `QuickStart<https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/quickstart.html>`.
+Tiegcmrun is a Python tool (in the tiegcmrun/ directory) that is used to compile and execute tiegcm in an automated fashion. Tiegcmrun can be executed interactively on the command line. See example of usage under `QuickStart<https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/quickstart.html>`_.
+
+TIEGCMpy
+------------
+
+Tiegcmpy is a Python tool (`Tiegcmpy github <https://github.com/NCAR/tiegcmpy>`_) that is used for post processing and data visualization of TIEGCM outputs. Tiegcmpy can be executed interactively on the command line or as an API in a python script. See example of usage `TIEGCMpy Docs <https://tiegcmpy.readthedocs.io/>`_.
 
 New Features and Functional Changes
 -----------------------------------
