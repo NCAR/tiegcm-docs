@@ -2,7 +2,9 @@ Release Notes for TIEGCM 3.0
 ============================
 
 **Release date**: May 2024  
+
 **Contact**: Discussion group email list tgcmgroup@ucar.edu  
+
 **Download page**: `HAO UCAR TGCM Download <https://github.com/NCAR/tiegcm/tree/master>`_
 
 This is a summary of modifications made to the TIEGCM since the release of TIEGCM 2.0 (March 2016).
@@ -14,7 +16,7 @@ Utility Tool
 TIEGCMrun
 ^^^^^^^
 
-Tiegcmrun is a Python script (in the tiegcmrun/ directory) that is used to compile and execute tiegcm in an automated fashion. Tiegcmrun can be executed interactively on the command line. See example of usage under QuickStart<https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/quickstart.html>.
+Tiegcmrun is a Python script (in the tiegcmrun/ directory) that is used to compile and execute tiegcm in an automated fashion. Tiegcmrun can be executed interactively on the command line. See example of usage under `QuickStart<https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/quickstart.html>`.
 
 New Features and Functional Changes
 -----------------------------------
