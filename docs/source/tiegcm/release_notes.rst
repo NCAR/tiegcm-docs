@@ -16,7 +16,7 @@ Utility Tools
 TIEGCMrun
 ------------
 
-Tiegcmrun is a Python tool (in the tiegcmrun/ directory) that is used to compile and execute tiegcm in an automated fashion. Tiegcmrun can be executed interactively on the command line. See example of usage under `QuickStart<https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/quickstart.html>`_.
+Tiegcmrun is a Python tool (in the tiegcmrun/ directory) that is used to compile and execute tiegcm in an automated fashion. Tiegcmrun can be executed interactively on the command line. See example of usage under `QuickStart <https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/quickstart.html>`_.
 
 TIEGCMpy
 ------------
