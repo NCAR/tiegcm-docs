@@ -25,8 +25,29 @@ Tiegcmrun provides several options for running simulations, compiling the model,
 
 These options allow users to tailor the simulation process to their needs, whether they are running standard benchmarks, requiring detailed debugging information, or conducting a custom simulation.
 
-Benchmark Runs
+
+Usage
 --------------
+
+Prerequisites
+""""""""""""""""
+
+Setup the environment by following the `Environment Setup <https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/environment_setup.html>`_ page.
+
+Regular Run
+""""""""""
+
+For custom simulations, you can move to the desired directory and simply run tiegcmrun without specifying a benchmark:
+
+.. code-block:: bash
+
+    python $TIEGCMHOME/tiegcmrun/tiegcmrun.py -c -e
+
+-c/--compile is to compile
+-e/--execute is to submit the Model run as a pbs job
+
+Benchmark Run
+""""""""""
 
 Tiegcmrun supports a variety of predefined benchmark runs, catering to different scientific interests and scenarios. Below are the supported benchmark runs:
 
@@ -58,21 +79,6 @@ Tiegcmrun supports a variety of predefined benchmark runs, catering to different
 - climatology_smin
 
 
-Usage Examples
---------------
-
-Regular Run
-""""""""""
-
-For custom simulations, you can move to the desired directory and simply run tiegcmrun without specifying a benchmark:
-
-.. code-block:: bash
-
-    python $TIEGCMHOME/tiegcmrun/tiegcmrun.py
-
-Benchmark Run
-""""""""""
-
 Benchmark runs are predefined simulations that allow users to test and compare the performance and output of TIE-GCM. To execute a benchmark run, move to the directory where you wish to have the run and use the following command:
 
 .. code-block:: bash
@@ -81,16 +87,17 @@ Benchmark runs are predefined simulations that allow users to test and compare t
 
 Where `{benchmark_name}` is the name of the benchmark you wish to run. Tiegcmrun supports several benchmark scenarios, including different seasons and storm events.
 
-.. code-block:: bash
-
-    python $TIEGCMHOME/tiegcmrun/tiegcmrun.py --options_path {path_to_options.json}
-
-This allows for a high degree of customization, enabling users to simulate specific scenarios tailored to their research needs.
 
 Reruns and Modifications
 """"""""""
 
 To rerun a previous simulation, possibly with some modifications, you can use the same commands as for custom runs. If you have a specific configuration or set of options saved from a previous run, you can specify this using the `--options_path` flag.
+
+.. code-block:: bash
+
+    python $TIEGCMHOME/tiegcmrun/tiegcmrun.py --options_path {path_to_options.json}
+
+This allows for a high degree of customization, enabling users to simulate specific scenarios tailored to their research needs.
 
 
 Subdirectories Created by Tiegcmrun
