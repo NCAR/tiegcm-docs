@@ -26,8 +26,13 @@ Tiegcmrun provides several options for running simulations, compiling the model,
 These options allow users to tailor the simulation process to their needs, whether they are running standard benchmarks, requiring detailed debugging information, or conducting a custom simulation.
 
 
-Usage Examples
+Usage
 --------------
+
+Prerequisites
+""""""""""""""""
+
+Setup the environment by following the `Environment Setup <https://tiegcm-docs.readthedocs.io/en/latest/tiegcm/environment_setup.html>`_ page.
 
 Regular Run
 """"""""""
