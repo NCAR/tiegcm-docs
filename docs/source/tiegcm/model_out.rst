@@ -43,9 +43,45 @@ A breakdown of the primary history fields essential for model operations:
    * - O1
      - ATOMIC OXYGEN
      - mmr
+   * - HE
+     - HELIUM
+     - mmr
+   * - OP
+     - O+ ION
+     - cm-3
+   * - N2D
+     - N2D
+     - mmr
+   * - N4S
+     - N4S
+     - mmr
+   * - NO
+     - NITRIC OXIDE
+     - mmr
+   * - AR
+     - ARGON (AR)
+     - mmr
+   * - TI
+     - ION TEMPERATURE
+     - K
+   * - TE
+     - ELECTRON TEMPERATURE
+     - K
    * - NE
      - ELECTRON DENSITY
      - cm-3
+   * - OMEGA
+     - VERTICAL MOTION
+     - s-1
+   * - O2P
+     - O2+ ION
+     - cm-3
+   * - Z
+     - GEOPOTENTIAL HEIGHT
+     - cm
+   * - POTEN
+     - ELECTRIC POTENTIAL
+     - volts
 
 Fields marked with `_NM` (e.g., TN_NM) are required for the time-stepping scheme, indicating data from the previous timestep necessary for continuity.
 

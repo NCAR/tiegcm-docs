@@ -35,11 +35,11 @@ New Features and Functional Changes
 **High Cadence Model Time**  
 - Model time for input/output is set to 4 digits (day/hour/minute/second) instead of the old 3-digit format (day/hour/minute) to allow higher cadence.
 
-**Unified N2 Calculations**  
+**Unified N2/MBAR/SCHT Calculations**  
 - The calculation of N2 mixing ratio, mean molecular mass, and scale height is unified to avoid recalculations. Some artificial caps on N2 mixing ratio are removed.
 
 **Rewritten Helium Module**  
-- The Helium module is rewritten and now included with all resolutions (default on).
+- The Helium module is rewritten and now included with all resolutions (default on). In addition, Helium effects on heating rates, etc., are now accounted correctly throughout the code.
 
 **Ring Filter**  
 - The old Fourier filter is replaced with a new ring filter.
@@ -83,6 +83,12 @@ Changes in Physics
 **Field-Aligned Ion Drag**  
 - Field-aligned ion drag is included in the momentum equation (Jiuhou Lei).
 
+**Collision Frequency**
+- In lamdas.F, collision frequency calculation now include all ion species (O+, O2+, N+, N2+ and NO+) instead of only accounting for O+, O2+, and NO+ (Haonan Wu).
+
+**N(2D) Transport**
+- Minor species solver now includes N(2D) which was assumed in (photo)-chemical equilibrium, this affects N chemistry at high altitudes (z>7) (Haonan Wu).
+
 **Electron Heat Flux Parameterization**  
 - The parameterization scheme of electron heat flux (fed) near the equator is changed in settei (Tong Dang).
 
@@ -93,10 +99,10 @@ Changes in Physics
 - Electrojet turbulent heating is introduced, default off (Jing Liu).
 
 **Empirical SAPS**  
-- Empirical SAPS is introduced, default off (Cheng Sheng).
+- Empirical SAPS is introduced, default off (Wenbin Wang).
 
 **Eclipse Solar EUV Masking**  
-- Support for eclipse solar EUV masking is added (Tong Dang).
+- Support for eclipse solar EUV masking is added (Jiuhou Lei).
 
 **Lower Boundary Forcing by External Data**  
 - Support for lower boundary forcing by external data (SD nudging, Haonan Wu).

@@ -140,58 +140,88 @@ The input file for TIEGCM simulations contains several parameters that control v
 BASIC Parameters
 """"""""""""""""""""
 
-**LABEL**
-    - **Prompt:** Run Label
-    - **Default:** None
-    - **Description:** A text used to label this model run.
-
 **start_date**
-    - **Prompt:** Start date for simulation (yyyy-mm-ddThh:mm:ss)
+    - **Prompt:** Start Time for Simulation (yyyy-mm-ddThh:mm:ss)
     - **Default:** None
 
 **stop_date**
-    - **Prompt:** Stop date for simulation (yyyy-mm-ddThh:mm:ss)
+    - **Prompt:** Stop Time for Simulation (yyyy-mm-ddThh:mm:ss)
     - **Default:** None
-
-**SOURCE**
-    - **Prompt:** SOURCE file location
-    - **Default:** None
-    - **Description:** The location of the startup file.
 
 **segment**
-    - **Prompt:** Segmentation, Model time per job (Day,Hour,Minute,Second)
+    - **Prompt:** Segmentation, Model Time per Job (Day,Hour,Min,Sec)
     - **Default:** None
     - **Description:** For a job every model day 1,0,0,0
+
+**LABEL**
+    - **Prompt:** Run Label
+    - **Default:** None
+    - **Description:** A text used to label this model run. It is written to output history files as a global file attribute. This parameter is purely a user convenience, and does not effect the model run in any way.
+
+**START_YEAR**
+    - **Prompt:** Model Start Year
+    - **Default:** None
+    - **Description:** The year for this model run.
 
 **START_DAY**
     - **Prompt:** Start Day
     - **Default:** None
     - **Description:** The starting day of year for this model run.
 
+**SOURCE**
+    - **Prompt:** Data File for Startup
+    - **Default:** None
+    - **Description:** The location of the startup file. It must be a TIEGCM history with the same grid resolution as the model being run. It does not need to be from the same model version as that being run.
+
+**SOURCE_START**
+    - **Prompt:** Selected Model Time in Source File
+    - **Default:** None
+    - **Description:** The selected model time (mtime) in the startup file. This option is typically used to specify the desired time stamp when there are multiple time stamps in one source file. If the SOURCE_START history is not found on the SOURCE file, the model will print an error message and stop.
+
+**PRISTART**
+    - **Prompt:** Primary start date (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The starting model time (Day of year, Hour, Minute, Second) of this model run. The starting time always generates a primary history record. If start_date is given, this will be automatically populated from start_date.
+
+**PRISTOP**
+    - **Prompt:** Primary stop date (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) of this model run. The stopping time always generates a primary history record. If stop_date is given, this will be automatically populated from stop_date.
+
 **PRIHIST**
-    - **Prompt:** Primary History (Day,Hour,Min,Sec)
+    - **Prompt:** Primary History Output Frequency (Day,Hour,Min,Sec)
     - **Default:** None
     - **Description:** Model time indicating how long the model generates of two primary history records.
 
 **MXHIST_PRIM**
     - **Prompt:** Max Primary History per Output
     - **Default:** None
-    - **Description:** The maximum number of records in one primary history file.
+    - **Description:** The maximum number of records in one primary history file. When this amount of histories have been written to the current OUTPUT file, the next OUTPUT file is created and it receives subsequent histories. This parameter can be adjusted to control the size of primary output files.
 
 **OUTPUT**
     - **Prompt:** Primary Output
     - **Default:** None
     - **Description:** The filenames of primary history files. Multiple files are supported.
 
+**SECSTART**
+    - **Prompt:** Start Time for Secondary History Output (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The starting model time (Day of year, Hour, Minute, Second) to generate the first secondary history record. If start_date is given, this will be automatically populated from start_date.
+
+**SECSTOP**
+    - **Prompt:** Stop Time for Secondary History Output (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) to generate the last secondary history record. If stop_date is given, this will be automatically populated from stop_date.
+
 **SECHIST**
-    - **Prompt:** Secondary History (Day,Hour,Min,Sec)
+    - **Prompt:** Secondary History Output Frequency (Day,Hour,Min,Sec)
     - **Default:** None
     - **Description:** Model time indicating how long the model generates of two secondary history records.
 
 **MXHIST_SECH**
     - **Prompt:** Max Secondary History per Output
     - **Default:** None
-    - **Description:** The maximum number of records in one secondary history file.
+    - **Description:** The maximum number of records in one secondary history file. When this amount of histories have been written to the current SECOUT file, the next SECOUT file is created and it receives subsequent histories. This parameter can be adjusted to control the size of secondary output files.
 
 **SECOUT**
     - **Prompt:** Secondary Output
@@ -200,55 +230,65 @@ BASIC Parameters
 
 **SECFLDS**
     - **Prompt:** Secondary Output Fields
-    - **Default:** ["TN","UN","VN","NE","TEC","POTEN","Z","ZG"]
-    - **Description:** Names of history fields to be outputted.
+    - **Default:** ["TN", "UN", "VN", "NE", "TEC", "POTEN", "Z", "ZG"]
+    - **Description:** Names of history fields to be outputted. These may be either fields that are also saved on primary histories (so-called "prognostic" fields), fields that have been requested via addfld calls in the source code, or fields available via the diagnostics module.
+
+**STEP**
+    - **Prompt:** Model Time Step in Seconds
+    - **Default:** None
+    - **Description:** The time step of the model in seconds. Default value is 60 seconds for 5-degree resolution, 30 seconds for 2.5-degree resolution, 10 seconds for 1.25-degree resolution, and 5 seconds for 0.625-degree resolution. During periods of quiet solar activity, the model can often be run at larger time steps. During periods of intense solar activity, the model may become numerically unstable. In this case, reducing the time step may be necessary for the model get through the rough period.
+
+**NSTEP_SUB**
+    - **Prompt:** Number of O+ Sub-Cycling per Time Step
+    - **Default:** 10
+    - **Description:** The number of iterations in one model time step for the O+ solver, the actual O+ time step is STEP/NSTEP_SUB.
 
 **POTENTIAL_MODEL**
-    - **Prompt:** High-latitude potential model that is going to be used
+    - **Prompt:** High-Latitude Potential Model
     - **Default:** "HEELIS"
     - **Valid Options:** ["HEELIS", "WEIMER"]
-    - **Description:** High-latitude potential model that is going to be used: Heelis/Weimer.
+    - **Description:** The high-latitude potential model used to calculate electric potential above a specified latitude. It can be either Heelis or Weimer.
 
 **GPI_NCFILE**
-    - **Prompt:** GPI file
+    - **Prompt:** GPI Data File
     - **Default:** None
-    - **Description:** The location of the GPI file containing 3-hourly KP and daily F107, F107A.
-    - **Warning:** If GPI file is specified KP and POWER/CTPOTEN are skipped.
+    - **Description:** The location of the GPI file containing 3-hourly KP and daily F107, F107A to drive high-latitude convection and the auroral precipitation oval.
+    - **Warning:** If GPI_NCFILE is specified, then KP and POWER/CTPOTEN are skipped. If further POTENTIAL_MODEL is WEIMER and IMF_NCFILE is specified, then the Weimer model and aurora will be driven by the IMF data, and only F107 and F107A will be read from the GPI data file.
 
 **IMF_NCFILE**
-    - **Prompt:** IMF file
+    - **Prompt:** IMF Data File
     - **Default:** None
-    - **Description:** The location of the IMF file containing hourly BXIMF, BYIMF, BZIMF, SWDEN, SWVEL.
-    - **Warning:** This can be set only if POTENTIAL_MODEL is WEIMER. If IMF file is specified BXIMF, BYIMF, BZIMF, SWDEN, and SWVEL are skipped.
+    - **Description:** The location of the IMF file containing hourly BXIMF, BYIMF, BZIMF, SWDEN, SWVEL. The data will be used to drive the Weimer 2005 potential model.
+    - **Warning:** This can be set only if POTENTIAL_MODEL is WEIMER. If IMF file is specified BXIMF, BYIMF, BZIMF, SWDEN, and SWVEL are skipped. If the current model time is not available on the IMF data file, the model will print an error message and stop.
 
 **KP**
-    - **Prompt:** Kp index
+    - **Prompt:** Geomagnetic Activity Index
     - **Default:** None
-    - **Description:** If KP is specified and POWER and/or CTPOTEN are skipped, then the given KP will be used with empirical formulas to calculate POWER and/or CTPOTEN, which are used in auroral parameterization and Heelis model.
-    - **Warning:** If KP is specified and POWER and/or CTPOTEN are skipped.
+    - **Warning:** If KP is specified and POWER and/or CTPOTEN are skipped, then the given KP will be used to calculate POWER and/or CTPOTEN using empirical formulas, which are used in auroral parameterization and Heelis model.
 
 **POWER**
-    - **Prompt:** POWER
+    - **Prompt:** Hemispheric Power
     - **Default:** None
     - **Description:** Used in auroral parameterization and Heelis model.
 
 **CTPOTEN**
-    - **Prompt:** CTPOTEN
+    - **Prompt:** Cross-Tail Potential
     - **Default:** None
-    - **Description:** Used in the auroralparameterization and Heelis model. Note that if POTENTIAL_MODEL is WEIMER, then the user is not allowed to provide CTPOTEN because it will be calculated from the Weimer electric potential.
+    - **Description:** Used in the auroral parameterization and Heelis model.
+    - **Warning:** If POTENTIAL_MODEL is WEIMER, then the user is not allowed to provide CTPOTEN because it will be calculated from the Weimer electric potential.
 
 **BXIMF**
-    - **Prompt:** Inter-Magnetic Field Bx in nT
+    - **Prompt:** Interplanetary Magnetic Field Bx in nT
     - **Default:** None
     - **Warning:** Only used if POTENTIAL_MODEL is WEIMER
 
 **BYIMF**
-    - **Prompt:** Inter-Magnetic Field By in nT
+    - **Prompt:** Interplanetary Magnetic Field By in nT
     - **Default:** None
     - **Warning:** Only used if POTENTIAL_MODEL is WEIMER
 
 **BZIMF**
-    - **Prompt:** Inter-Magnetic Field Bz in nT
+    - **Prompt:** Interplanetary Magnetic Field Bz in nT
     - **Default:** None
     - **Warning:** Only used if POTENTIAL_MODEL is WEIMER
 
@@ -263,7 +303,7 @@ BASIC Parameters
     - **Warning:** Only used if POTENTIAL_MODEL is WEIMER
 
 **F107**
-    - **Prompt:** F10.7
+    - **Prompt:** Daily F10.7
     - **Default:** None
     - **Description:** Daily 10.7 cm solar flux.
 
@@ -275,30 +315,88 @@ BASIC Parameters
 INTERMEDIATE Parameters
 """"""""""""""""""""
 
-**SOURCE_START**
-    - **Prompt:** Selected Date in Source File
+**AMIENH,AMIESH**
+    - **Prompt:** AMIE Northern and Southern Hemisphere Data
     - **Default:** None
-    - **Description:** The selected model time (mtime) in the startup file.
+    - **Description:** Data files containing output from the AMIE model to be imported into TIEGCM. AMIENH is northern hemisphere, AMIESH is southern hemisphere. Contact Gang Lu (ganglu@ucar.edu) for more information.
 
-**START_YEAR**
-    - **Prompt:** Source Start Year
+**BGRDDATA_NCFILE**
+    - **Prompt:** Data File for Zonal Mean Climatology of T, U, V, Z
     - **Default:** None
-    - **Description:** The year for this model run.
+    - **Description:** Data file providing zonal mean climatology of T, U, V, and Z coming from either empirical models (e.g., MSIS, HWM) or reanalysis data (e.g., NOGAPS-ALPHA). If no input file is specified, a flat lower boundary (U = V = 0, T = 181K, Z = 96.4km) is employed by default.
 
-**STEP**
-    - **Prompt:** STEP number
+**GSWM_MI_DI_NCFILE**
+    - **Prompt:** Data File for Migrating Diurnal Tidal Perturbation of T, U, V, Z from GSWM
     - **Default:** None
-    - **Description:** The time step of the model in seconds.
+    - **Description:** The location of Global Scale Wave Model files containing migrating diurnal tidal perturbations.
 
-**SECSTART**
-    - **Prompt:** Secondary Start Date (Day,Hour,Min,Sec)
+**GSWM_MI_SDI_NCFILE**
+    - **Prompt:** Data File for Migrating Semi-Diurnal Tidal Perturbation of T, U, V, Z from GSWM
     - **Default:** None
-    - **Description:** The starting model time (Day of year, Hour, Minute, Second) to generate the first secondary history record.
+    - **Description:** The location of Global Scale Wave Model files containing migrating semidiurnal tidal perturbations.
 
-**SECSTOP**
-    - **Prompt:** Secondary Stop Date (Day,Hour,Min,Sec)
+**GSWM_NM_DI_NCFILE**
+    - **Prompt:** Data File for Non-Migrating Diurnal Tidal Perturbation of T, U, V, Z from GSWM
     - **Default:** None
-    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) to generate the last secondary history record.
+    - **Description:** The location of Global Scale Wave Model files containing nonmigrating diurnal tidal perturbations.
+
+**GSWM_NM_SDI_NCFILE**
+    - **Prompt:** Data File for Non-Migrating Semi-Diurnal Tidal Perturbation of T, U, V, Z from GSWM
+    - **Default:** None
+    - **Description:** The location of Global Scale Wave Model files containing nonmigrating semidiurnal tidal perturbations.
+
+**CTMT_NCFILE**
+    - **Prompt:** Data File for Tidal Perturbation of T, U, V, Z from CTMT
+    - **Default:** None
+    - **Description:** The location of Climatological Tidal Model of the Thermosphere files containing all tidal perturbations.
+
+EXPERT Parameters
+""""""""""""""""""""
+
+**CALENDAR_ADVANCE**
+    - **Prompt:** Flag Controling Whether the Model Date Changes Across One Day
+    - **Default:** 1
+    - **Valid Options:** [0, 1]
+    - **Description:** If CALENDAR_ADVANCE is 1, then the calendar time is advanced from START_DAY, iday (init_module) is incremented every 24 hours, and the sun's declination and longitude is recalculated (see sub advance_day in advance.F and sub sunloc in magfield.F), thereby allowing seasonal change to take place. The earth's orbital eccentricity "sfeps" is also updated as a 6% variation in solar output over a year. If 0, the model date doesn't change and is referred to as a "steady-state" run. This is often used to advance the model to a "steady-state" for a given date, prior to a production run with CALENDAR_ADVANCE=1.
+
+**TIDE,TIDE2**
+    - **Prompt:** Hough Mode Amplitudes and Phases of Semi-Diurnal/Diurnal Tides
+    - **Default:** None
+    - **Warning:** TIDE and TIDE2 should be specified only for experiments where amplitude and phases of the tides must be used.
+
+**AURORA**
+    - **Prompt:** Flag for Auroral Parameterization
+    - **Default:** 1
+    - **Valid Options:** [0, 1]
+    - **Description:** If AURORA is 1, use Roble & Ridley (1987) auroral model; if 0, no auroral model is applied.
+
+**DYNAMO**
+    - **Prompt:** Flag for Electrodynamo Calculation
+    - **Default:** 1
+    - **Valid Options:** [0, 1]
+    - **Description:** If DYNAMO is 1, then dynamo (pdynamo.F) will be called, and ion drift velocities will be calculated. If 0, then dynamo will not be called, and ion drift velocities will be zero.
+
+**CALC_HELIUM**
+    - **Prompt:** Flag for Helium Calculation
+    - **Default:** 1
+    - **Valid Options:** [0, 1]
+    - **Description:** If CALC_HELIUM is 1, Helium is calculated as a major composition species. If 0, Helium is zeroed out. If CALC_HELIUM is 1 and the source history does not have Helium, then Helium will be initialized globally to 0.1154E-5.
+
+**EDDY_DIF**
+    - **Prompt:** Flag for Day-of-Year Dependent Eddy Diffusion Coefficient
+    - **Default:** 0
+    - **Valid Options:** [0, 1]
+    - **Description:** If EDDY_DIF is 1, then day-of-year dependent eddy diffusion will be calculated, otherwise eddy diffusion will be set to pressure-dependent constants. See cons.F.
+
+**JOULEFAC**
+    - **Prompt:** Joule Heating Factor
+    - **Default:** 1.5
+    - **Description:** This factor is multiplied by the joule heating calculation (see subroutine qjoule_tn in qjoule.F).
+
+**COLFAC**
+    - **Prompt:** O-O+ Collision Frequency Factor
+    - **Default:** 1.5
+    - **Description:** O-O+ collision frequency, alias the "Burnside Factor". Default is 1.5, but there have been recommendations for 1.3. COLFAC is used in lamdas.F and oplus.F.
 
 **ELECTRON_HEATING**
     - **Prompt:** Thermal Electron Heating Scheme
@@ -306,8 +404,40 @@ INTERMEDIATE Parameters
     - **Valid Options:** [4, 6]
     - **Description:** 4 for the 4th order scheme (Swartz & Nisbet 1972) and 6 for the 6th order scheme (Smithtro & Solomon 2008).
 
+**HE_COEFS_NCFILE**
+    - **Prompt:** Data File for Helium Coefficients
+    - **Default:** None
+    - **Description:** The location of Helium coefficient data file used for Helium upper boundary flux calculation.
+
+**SABER_NCFILE**
+    - **Prompt:** Data File for Tidal Perturbation of T, Z from SABER
+    - **Default:** None
+    - **Description:** The location of SABER files containing tidal perturbations of temperature and geopotential height.
+
+**TIDI_NCFILE**
+    - **Prompt:** Data File for Tidal Perturbation of U, V from TIDI
+    - **Default:** None
+    - **Description:** The location of TIDI files containing tidal perturbations of zonal and meridional neutral winds.
+
+**OPDIFFCAP**
+    - **Prompt:** Maximum O+ Ambipolar Diffusion coefficient
+    - **Default:** 0
+    - **Description:** Optional cap on ambipolar diffusion coefficient for O+. This can improve model stability in the topside F-region, but it is only recommended as a last resort since it will change model results. The default is 0, i.e., no cap. If this is non-zero (provided by the user), then it is implemented in subroutine rrk of src/oplus.F.
+
+**CURRENT_PG**
+    - **Prompt:** Flag for Pressure Gradient and Gravity Force in Electrodynamo
+    - **Default:** 1
+    - **Valid Options:** [0, 1]
+    - **Description:** If CURRENT_PG is 1, current due to plasma pressure gradient and gravity is calculated and included as a forcing term in the dynamo equation (ignored if DYNAMO is 0).
+
+**CURRENT_KQ**
+    - **Prompt:** Flag for Current Sheet Calculation in Electrodynamo
+    - **Default:** 0
+    - **Valid Options:** [0, 1]
+    - **Description:** If CURRENT_KQ is 1, then height-integrated current density of current sheet, and upward current density at the top of the ionosphere is calculated (ignored if DYNAMO is 0). See current.F90 to save JQR, JE13D, JE23D, KQPHI, KQLAM.
+
 **DOECLIPSE**
-    - **Prompt:** Apply Eclipse Mask
+    - **Prompt:** Flag for Eclipse Mask
     - **Default:** false
     - **Valid Options:** [true, false]
     - **Description:** Apply an Eclipse mask if an eclipse occurs during this event. Will do nothing if there are no eclipses during this event. Applies partial, annular, or total solar eclipse masks.
@@ -318,54 +448,6 @@ INTERMEDIATE Parameters
     - **Valid Options:** [true, false]
     - **Description:** Enable one-way coupling from remix to TIEGCM. Read remix h5 file. Must be named or linked as msphere.mix.h5.
     - **Warning:** HEELIS must be set for One-way Coupling
-
-EXPERT Parameters
-""""""""""""""""""""
-
-**CALENDAR_ADVANCE**
-    - **Prompt:** Whether the model date changes across one day
-    - **Default:** 1
-    - **Description:** 1 for model runs with advancing dates (date changes across a model day). 0 for model runs with constant dates (date doesn’t change across a model day). CALENDAR_ADVANCE=0 is usually used to prepare the startup file for a production run; CALENDAR_ADVANCE=1 is used in a production run.
-
-**PRISTART**
-    - **Prompt:** Primary start date (Day,Hour,Min,Sec)
-    - **Default:** None
-    - **Description:** The starting model time (Day of year, Hour, Minute, Second) of this model run. The starting time always generates a primary history record.
-
-**PRISTOP**
-    - **Prompt:** Primary stop date (Day,Hour,Min,Sec)
-    - **Default:** None
-    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) of this model run. The stopping time always generates a primary history record.
-
-**NSTEP_SUB**
-    - **Prompt:** NSTEP_SUB number
-    - **Default:** "10"
-    - **Description:** The number of iterations in one model time step for the O+ solver, the actual O+ time step is STEP/NSTEP_SUB.
-
-**GSWM_MI_DI_NCFILE**
-    - **Prompt:** GSWM diurnal migrating data file
-    - **Default:** None
-    - **Description:** The location of Global Scale Wave Model files containing diurnal migrating tidal perturbations.
-
-**GSWM_MI_SDI_NCFILE**
-    - **Prompt:** GSWM semidiurnal migrating data file
-    - **Default:** None
-    - **Description:** The location of Global Scale Wave Model files containing semidiurnal migrating tidal perturbations.
-
-**GSWM_NM_DI_NCFILE**
-    - **Prompt:** GSWM diurnal nonmigrating data file
-    - **Default:** None
-    - **Description:** The location of Global Scale Wave Model files containing diurnal nonmigrating tidal perturbations.
-
-**GSWM_NM_SDI_NCFILE**
-    - **Prompt:** GSWM semidiurnal nonmigrating file
-    - **Default:** None
-    - **Description:** The location of Global Scale Wave Model files containing semidiurnal nonmigrating tidal perturbations.
-
-**HE_COEFS_NCFILE**
-    - **Prompt:** HE Coefs file
-    - **Default:** None
-    - **Description:** The location of HE Coefs file containing coefficients for high efficiency computations.
 
 **other_input**
     - **Prompt:** Other input parameters
@@ -383,7 +465,7 @@ Derecho System Parameters
 """"""""""""""""""""
 
 Basic Parameters
-''''''''''
+""""""""""
 
 **Project Code**
     - **Prompt:** Project Code
@@ -396,7 +478,7 @@ Basic Parameters
     - **Warning:** Maximum walltime is 12:00:00.
 
 Intermediate Parameters
-''''''''''
+""""""""""
 
 **PBS Queue Name**
     - **Prompt:** PBS queue name
@@ -410,7 +492,7 @@ Intermediate Parameters
     - **Valid Options:** [premium, regular, economy, preempt]
 
 Expert Parameters
-''''''''''
+""""""""""
 
 **Select (Number of Nodes)**
     - **Prompt:** Number of nodes to request
@@ -447,7 +529,7 @@ Pleiades System Parameters
 """"""""""""""""""""
 
 Basic Parameters
-''''''''''
+""""""""""
 
 **PBS Queue Name**
     - **Prompt:** PBS queue name
@@ -461,7 +543,7 @@ Basic Parameters
     - **Warning:** Maximum walltime on normal queue is 12:00:00.
 
 Expert Parameters
-''''''''''
+""""""""""
 
 **Model (System on PFE)**
     - **Prompt:** System on PFE to use
