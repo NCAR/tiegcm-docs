@@ -111,7 +111,7 @@ Intermediate Parameters
 These parameters provide additional detail for users with some experience in model setup, allowing for finer control over the simulation environment.
 
 **Highest Pressure Level**
-    - **Level:** INTERMEDIATE
+    - **Level:** EXPERT
     - **Prompt:** Highest pressure level
     - **Default:** 7
     - **Valid Options:** [7, 8, 9, 10, 11]
@@ -140,11 +140,11 @@ The input file for TIEGCM simulations contains several parameters that control v
 BASIC Parameters
 """"""""""""""""""""
 
-**start_date**
+**start_time**
     - **Prompt:** Start Time for Simulation (yyyy-mm-ddThh:mm:ss)
     - **Default:** None
 
-**stop_date**
+**stop_time**
     - **Prompt:** Stop Time for Simulation (yyyy-mm-ddThh:mm:ss)
     - **Default:** None
 
@@ -153,20 +153,22 @@ BASIC Parameters
     - **Default:** None
     - **Description:** For a job every model day 1,0,0,0
 
+**secondary_start_time**
+    - **Prompt:** Start Time for Secondary History Output (yyyy-mm-ddThh:mm:ss)
+    - **Default:** None
+    - **Description:** If empty, it will be set to start_time.
+    - **Warning:** secondary_start_time should not be earlier than start_time.
+
+**secondary_stop_time**
+    - **Prompt:** Stop Time for Secondary History Output (yyyy-mm-ddThh:mm:ss)
+    - **Default:** None
+    - **Description:** If empty, it will be set to stop_time.
+    - **Warning:** secondary_stop_time should not be later than stop_time.
+
 **LABEL**
     - **Prompt:** Run Label
     - **Default:** None
     - **Description:** A text used to label this model run. It is written to output history files as a global file attribute. This parameter is purely a user convenience, and does not effect the model run in any way.
-
-**START_YEAR**
-    - **Prompt:** Model Start Year
-    - **Default:** None
-    - **Description:** The year for this model run.
-
-**START_DAY**
-    - **Prompt:** Start Day
-    - **Default:** None
-    - **Description:** The starting day of year for this model run.
 
 **SOURCE**
     - **Prompt:** Data File for Startup
@@ -178,16 +180,6 @@ BASIC Parameters
     - **Default:** None
     - **Description:** The selected model time (mtime) in the startup file. This option is typically used to specify the desired time stamp when there are multiple time stamps in one source file. If the SOURCE_START history is not found on the SOURCE file, the model will print an error message and stop.
 
-**PRISTART**
-    - **Prompt:** Primary start date (Day,Hour,Min,Sec)
-    - **Default:** None
-    - **Description:** The starting model time (Day of year, Hour, Minute, Second) of this model run. The starting time always generates a primary history record. If start_date is given, this will be automatically populated from start_date.
-
-**PRISTOP**
-    - **Prompt:** Primary stop date (Day,Hour,Min,Sec)
-    - **Default:** None
-    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) of this model run. The stopping time always generates a primary history record. If stop_date is given, this will be automatically populated from stop_date.
-
 **PRIHIST**
     - **Prompt:** Primary History Output Frequency (Day,Hour,Min,Sec)
     - **Default:** None
@@ -195,23 +187,13 @@ BASIC Parameters
 
 **MXHIST_PRIM**
     - **Prompt:** Max Primary History per Output
-    - **Default:** None
+    - **Default:** 24
     - **Description:** The maximum number of records in one primary history file. When this amount of histories have been written to the current OUTPUT file, the next OUTPUT file is created and it receives subsequent histories. This parameter can be adjusted to control the size of primary output files.
 
 **OUTPUT**
     - **Prompt:** Primary Output
     - **Default:** None
     - **Description:** The filenames of primary history files. Multiple files are supported.
-
-**SECSTART**
-    - **Prompt:** Start Time for Secondary History Output (Day,Hour,Min,Sec)
-    - **Default:** None
-    - **Description:** The starting model time (Day of year, Hour, Minute, Second) to generate the first secondary history record. If start_date is given, this will be automatically populated from start_date.
-
-**SECSTOP**
-    - **Prompt:** Stop Time for Secondary History Output (Day,Hour,Min,Sec)
-    - **Default:** None
-    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) to generate the last secondary history record. If stop_date is given, this will be automatically populated from stop_date.
 
 **SECHIST**
     - **Prompt:** Secondary History Output Frequency (Day,Hour,Min,Sec)
@@ -220,7 +202,7 @@ BASIC Parameters
 
 **MXHIST_SECH**
     - **Prompt:** Max Secondary History per Output
-    - **Default:** None
+    - **Default:** 24
     - **Description:** The maximum number of records in one secondary history file. When this amount of histories have been written to the current SECOUT file, the next SECOUT file is created and it receives subsequent histories. This parameter can be adjusted to control the size of secondary output files.
 
 **SECOUT**
@@ -241,7 +223,7 @@ BASIC Parameters
 **NSTEP_SUB**
     - **Prompt:** Number of O+ Sub-Cycling per Time Step
     - **Default:** 10
-    - **Description:** The number of iterations in one model time step for the O+ solver, the actual O+ time step is STEP/NSTEP_SUB.
+    - **Description:** The number of iterations in one model time step for the O+ solver, the actual O+ time step is STEP/NSTEP_SUB. In geomagnetic quiet time, this number can typically be set as 10, but in storm time, a larger number (20 or even 50) is usually required to overcome the numerical stability.
 
 **POTENTIAL_MODEL**
     - **Prompt:** High-Latitude Potential Model
@@ -315,15 +297,15 @@ BASIC Parameters
 INTERMEDIATE Parameters
 """"""""""""""""""""
 
-**AMIENH,AMIESH**
-    - **Prompt:** AMIE Northern and Southern Hemisphere Data
+**AMIENH**
+    - **Prompt:** AMIE Northern Hemisphere Data
     - **Default:** None
-    - **Description:** Data files containing output from the AMIE model to be imported into TIEGCM. AMIENH is northern hemisphere, AMIESH is southern hemisphere. Contact Gang Lu (ganglu@ucar.edu) for more information.
+    - **Description:** Data files containing output from the AMIE model to be imported into TIEGCM. AMIENH is northern hemisphere. Contact Gang Lu (ganglu@ucar.edu) for more information.
 
-**BGRDDATA_NCFILE**
-    - **Prompt:** Data File for Zonal Mean Climatology of T, U, V, Z
+**AMIESH**
+    - **Prompt:** AMIE Southern Hemisphere Data
     - **Default:** None
-    - **Description:** Data file providing zonal mean climatology of T, U, V, and Z coming from either empirical models (e.g., MSIS, HWM) or reanalysis data (e.g., NOGAPS-ALPHA). If no input file is specified, a flat lower boundary (U = V = 0, T = 181K, Z = 96.4km) is employed by default.
+    - **Description:** Data files containing output from the AMIE model to be imported into TIEGCM. AMIESH is southern hemisphere. Contact Gang Lu (ganglu@ucar.edu) for more information.
 
 **GSWM_MI_DI_NCFILE**
     - **Prompt:** Data File for Migrating Diurnal Tidal Perturbation of T, U, V, Z from GSWM
@@ -345,69 +327,54 @@ INTERMEDIATE Parameters
     - **Default:** None
     - **Description:** The location of Global Scale Wave Model files containing nonmigrating semidiurnal tidal perturbations.
 
+EXPERT Parameters
+""""""""""""""""""""
+
+**START_YEAR**
+    - **Prompt:** Model Start Year
+    - **Default:** None
+    - **Description:** The year for this model run. If start_time is given, this option will be automatically populated from start_time.
+
+**START_DAY**
+    - **Prompt:** Start Day
+    - **Default:** None
+    - **Description:** The starting day of year for this model run. If start_time is given, this option will be automatically populated from start_time.
+
+**PRISTART**
+    - **Prompt:** Primary start date (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The starting model time (Day of year, Hour, Minute, Second) of this model run. The starting time always generates a primary history record. If start_time is given, this option will be automatically populated from start_time.
+
+**PRISTOP**
+    - **Prompt:** Primary stop date (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) of this model run. The stopping time always generates a primary history record. If stop_time is given, this option will be automatically populated from stop_time.
+
+**SECSTART**
+    - **Prompt:** Start Time for Secondary History Output (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The starting model time (Day of year, Hour, Minute, Second) to generate the first secondary history record. If secondary_start_time is given, this option will be automatically populated from secondary_start_time.
+
+**SECSTOP**
+    - **Prompt:** Stop Time for Secondary History Output (Day,Hour,Min,Sec)
+    - **Default:** None
+    - **Description:** The stopping model time (Day of year, Hour, Minute, Second) to generate the last secondary history record. If secondary_stop_time is given, this option will be automatically populated from secondary_stop_time.
+
+**CALENDAR_ADVANCE**
+    - **Prompt:** Flag Controling Whether the Model Date Changes Across One Day
+    - **Default:** None
+    - **Valid Options:** [0, 1]
+    - **Description:** If CALENDAR_ADVANCE is 1, then the calendar time is advanced from START_DAY, iday (init_module) is incremented every 24 hours, and the sun's declination and longitude is recalculated (see sub advance_day in advance.F and sub sunloc in magfield.F), thereby allowing seasonal change to take place. The earth's orbital eccentricity "sfeps" is also updated as a 6% variation in solar output over a year. If 0, the model date doesn't change and is referred to as a "steady-state" run. This is often used to advance the model to a "steady-state" for a given date, prior to a production run with CALENDAR_ADVANCE=1. Default is 1.
+
+**BGRDDATA_NCFILE**
+    - **Prompt:** Data File for Zonal Mean Climatology of T, U, V, Z
+    - **Default:** None
+    - **Description:** Data file providing zonal mean climatology of T, U, V, and Z coming from either empirical models (e.g., MSIS, HWM) or reanalysis data (e.g., NOGAPS-ALPHA). If no input file is specified, a flat lower boundary (U = V = 0, T = 181K, Z = 96.4km) is employed by default.
+
 **CTMT_NCFILE**
     - **Prompt:** Data File for Tidal Perturbation of T, U, V, Z from CTMT
     - **Default:** None
     - **Description:** The location of Climatological Tidal Model of the Thermosphere files containing all tidal perturbations.
-
-EXPERT Parameters
-""""""""""""""""""""
-
-**CALENDAR_ADVANCE**
-    - **Prompt:** Flag Controling Whether the Model Date Changes Across One Day
-    - **Default:** 1
-    - **Valid Options:** [0, 1]
-    - **Description:** If CALENDAR_ADVANCE is 1, then the calendar time is advanced from START_DAY, iday (init_module) is incremented every 24 hours, and the sun's declination and longitude is recalculated (see sub advance_day in advance.F and sub sunloc in magfield.F), thereby allowing seasonal change to take place. The earth's orbital eccentricity "sfeps" is also updated as a 6% variation in solar output over a year. If 0, the model date doesn't change and is referred to as a "steady-state" run. This is often used to advance the model to a "steady-state" for a given date, prior to a production run with CALENDAR_ADVANCE=1.
-
-**TIDE,TIDE2**
-    - **Prompt:** Hough Mode Amplitudes and Phases of Semi-Diurnal/Diurnal Tides
-    - **Default:** None
-    - **Warning:** TIDE and TIDE2 should be specified only for experiments where amplitude and phases of the tides must be used.
-
-**AURORA**
-    - **Prompt:** Flag for Auroral Parameterization
-    - **Default:** 1
-    - **Valid Options:** [0, 1]
-    - **Description:** If AURORA is 1, use Roble & Ridley (1987) auroral model; if 0, no auroral model is applied.
-
-**DYNAMO**
-    - **Prompt:** Flag for Electrodynamo Calculation
-    - **Default:** 1
-    - **Valid Options:** [0, 1]
-    - **Description:** If DYNAMO is 1, then dynamo (pdynamo.F) will be called, and ion drift velocities will be calculated. If 0, then dynamo will not be called, and ion drift velocities will be zero.
-
-**CALC_HELIUM**
-    - **Prompt:** Flag for Helium Calculation
-    - **Default:** 1
-    - **Valid Options:** [0, 1]
-    - **Description:** If CALC_HELIUM is 1, Helium is calculated as a major composition species. If 0, Helium is zeroed out. If CALC_HELIUM is 1 and the source history does not have Helium, then Helium will be initialized globally to 0.1154E-5.
-
-**EDDY_DIF**
-    - **Prompt:** Flag for Day-of-Year Dependent Eddy Diffusion Coefficient
-    - **Default:** 0
-    - **Valid Options:** [0, 1]
-    - **Description:** If EDDY_DIF is 1, then day-of-year dependent eddy diffusion will be calculated, otherwise eddy diffusion will be set to pressure-dependent constants. See cons.F.
-
-**JOULEFAC**
-    - **Prompt:** Joule Heating Factor
-    - **Default:** 1.5
-    - **Description:** This factor is multiplied by the joule heating calculation (see subroutine qjoule_tn in qjoule.F).
-
-**COLFAC**
-    - **Prompt:** O-O+ Collision Frequency Factor
-    - **Default:** 1.5
-    - **Description:** O-O+ collision frequency, alias the "Burnside Factor". Default is 1.5, but there have been recommendations for 1.3. COLFAC is used in lamdas.F and oplus.F.
-
-**ELECTRON_HEATING**
-    - **Prompt:** Thermal Electron Heating Scheme
-    - **Default:** 6
-    - **Valid Options:** [4, 6]
-    - **Description:** 4 for the 4th order scheme (Swartz & Nisbet 1972) and 6 for the 6th order scheme (Smithtro & Solomon 2008).
-
-**HE_COEFS_NCFILE**
-    - **Prompt:** Data File for Helium Coefficients
-    - **Default:** None
-    - **Description:** The location of Helium coefficient data file used for Helium upper boundary flux calculation.
 
 **SABER_NCFILE**
     - **Prompt:** Data File for Tidal Perturbation of T, Z from SABER
@@ -419,38 +386,180 @@ EXPERT Parameters
     - **Default:** None
     - **Description:** The location of TIDI files containing tidal perturbations of zonal and meridional neutral winds.
 
+**TIDE**
+    - **Prompt:** Hough Mode Amplitudes and Phases of Semi-Diurnal Tides
+    - **Default:** None
+    - **Warning:** TIDE should be specified only for experiments where amplitude and phases of the tides must be used. Default is [0, 0, 0, 0, 0, 0, 0, 0, 0, 0].
+
+**TIDE2**
+    - **Prompt:** Hough Mode Amplitudes and Phases of Diurnal Tides
+    - **Default:** None
+    - **Warning:** TIDE should be specified only for experiments where amplitude and phases of the tides must be used. Default is [0, 0].
+
+**AURORA**
+    - **Prompt:** Flag for Auroral Parameterization
+    - **Default:** None
+    - **Valid Options:** [0, 1]
+    - **Description:** If AURORA is 1, use Roble & Ridley (1987) auroral model; if 0, no auroral model is applied. Default is 1.
+
+**DYNAMO**
+    - **Prompt:** Flag for Electrodynamo Calculation
+    - **Default:** None
+    - **Valid Options:** [0, 1]
+    - **Description:** If DYNAMO is 1, then dynamo (pdynamo.F) will be called, and ion drift velocities will be calculated. If 0, then dynamo will not be called, and ion drift velocities will be zero. Default is 1.
+
+**CALC_HELIUM**
+    - **Prompt:** Flag for Helium Calculation
+    - **Default:** None
+    - **Valid Options:** [0, 1]
+    - **Description:** If CALC_HELIUM is 1, Helium is calculated as a major composition species. If 0, Helium is zeroed out. If CALC_HELIUM is 1 and the source history does not have Helium, then Helium will be initialized globally to 0.1154E-5. Default is 1.
+
+**HE_COEFS_NCFILE**
+    - **Prompt:** Data File for Helium Coefficients
+    - **Default:** None
+    - **Description:** The location of Helium coefficient data file used for Helium upper boundary flux calculation.
+
+**EDDY_DIF**
+    - **Prompt:** Flag for Day-of-Year Dependent Eddy Diffusion Coefficient
+    - **Default:** None
+    - **Valid Options:** [0, 1]
+    - **Description:** If EDDY_DIF is 1, then day-of-year dependent eddy diffusion will be calculated, otherwise eddy diffusion will be set to pressure-dependent constants. See cons.F. Default is 0.
+
+**JOULEFAC**
+    - **Prompt:** Joule Heating Factor
+    - **Default:** None
+    - **Description:** This factor is multiplied by the joule heating calculation (see subroutine qjoule_tn in qjoule.F). Default is 1.5.
+
+**COLFAC**
+    - **Prompt:** O-O+ Collision Frequency Factor
+    - **Default:** None
+    - **Description:** O-O+ collision frequency, alias the "Burnside Factor". Default is 1.5, but there have been recommendations for 1.3. COLFAC is used in lamdas.F and oplus.F. Default is 1.5.
+
+**ELECTRON_HEATING**
+    - **Prompt:** Thermal Electron Heating Scheme
+    - **Default:** None
+    - **Valid Options:** [4, 6]
+    - **Description:** 4 for the 4th order scheme (Swartz & Nisbet 1972) and 6 for the 6th order scheme (Smithtro & Solomon 2008). Default is 6.
+
 **OPDIFFCAP**
     - **Prompt:** Maximum O+ Ambipolar Diffusion coefficient
-    - **Default:** 0
-    - **Description:** Optional cap on ambipolar diffusion coefficient for O+. This can improve model stability in the topside F-region, but it is only recommended as a last resort since it will change model results. The default is 0, i.e., no cap. If this is non-zero (provided by the user), then it is implemented in subroutine rrk of src/oplus.F.
+    - **Default:** None
+    - **Description:** Optional cap on ambipolar diffusion coefficient for O+. This can improve model stability in the topside F-region, but it is only recommended as a last resort since it will change model results. Default is 0, i.e., no cap. If this is non-zero (provided by the user), then it is implemented in subroutine rrk of oplus.F.
 
 **CURRENT_PG**
     - **Prompt:** Flag for Pressure Gradient and Gravity Force in Electrodynamo
-    - **Default:** 1
+    - **Default:** None
     - **Valid Options:** [0, 1]
-    - **Description:** If CURRENT_PG is 1, current due to plasma pressure gradient and gravity is calculated and included as a forcing term in the dynamo equation (ignored if DYNAMO is 0).
+    - **Description:** If CURRENT_PG is 1, current due to plasma pressure gradient and gravity is calculated and included as a forcing term in the dynamo equation (ignored if DYNAMO is 0). Default is 1.
 
 **CURRENT_KQ**
     - **Prompt:** Flag for Current Sheet Calculation in Electrodynamo
-    - **Default:** 0
+    - **Default:** None
     - **Valid Options:** [0, 1]
-    - **Description:** If CURRENT_KQ is 1, then height-integrated current density of current sheet, and upward current density at the top of the ionosphere is calculated (ignored if DYNAMO is 0). See current.F90 to save JQR, JE13D, JE23D, KQPHI, KQLAM.
+    - **Description:** If CURRENT_KQ is 1, then height-integrated current density of current sheet, and upward current density at the top of the ionosphere is calculated (ignored if DYNAMO is 0). See current.F90 to save JQR, JE13D, JE23D, KQPHI, KQLAM. Default is 0.
+
+**ET**
+    - **Prompt:** Flag for Calculating Electrojet Turbulent Heating
+    - **Default:** None
+    - **Valid Options:** [true, false]
+    - **Description:** If ET is true, then electrojet turbulent heating is calculated and applied to the electron thermodynamic equation. Default is false.
+
+**SAPS**
+    - **Prompt:** Flag for Including Empirical SAPS
+    - **Default:** None
+    - **Valid Options:** [true, false]
+    - **Description:** If SAPS is true, then an empirical sub-auroral polarization streams (SAPS) ion drift is added to UI, VI. Default is false.
 
 **DOECLIPSE**
     - **Prompt:** Flag for Eclipse Mask
-    - **Default:** false
+    - **Default:** None
     - **Valid Options:** [true, false]
-    - **Description:** Apply an Eclipse mask if an eclipse occurs during this event. Will do nothing if there are no eclipses during this event. Applies partial, annular, or total solar eclipse masks.
+    - **Description:** Apply an Eclipse mask if an eclipse occurs during this event. Will do nothing if there are no eclipses during this event. Applies partial, annular, or total solar eclipse masks. Default is false.
+
+**ECLIPSE_LIST**
+    - **Prompt:** Data File for Eclipse List
+    - **Default:** None
+    - **Description:** The location of eclipse list data file used for eclipse mask.
 
 **ONEWAY**
     - **Prompt:** Enable One-way Coupling To Remix
-    - **Default:** false
+    - **Default:** None
     - **Valid Options:** [true, false]
-    - **Description:** Enable one-way coupling from remix to TIEGCM. Read remix h5 file. Must be named or linked as msphere.mix.h5.
-    - **Warning:** HEELIS must be set for One-way Coupling
+    - **Description:** Enable one-way coupling from remix to TIEGCM. Default is false.
+    - **Warning:** POTENTIAL_MODEL must be set to HEELIS for one-way coupling.
+
+**MIXFILE**
+    - **Prompt:** Data File for Remix
+    - **Default:** None
+    - **Description:** The location of remix data file. Default is "msphere.mix.h5".
+
+**NUDGE_NCPRE**
+    - **Prompt:** The Common Part of NUDGE_NCFILE Filenames (Prefix)
+    - **Default:** None
+    - **Description:** NUDGE_NCPRE + NUDGE_NCFILE + NUDGE_NCPOST consist the full name of the data file.
+
+**NUDGE_NCPOST**
+    - **Prompt:** The Common Part of NUDGE_NCFILE Filenames (Postfix)
+    - **Default:** None
+    - **Description:** NUDGE_NCPRE + NUDGE_NCFILE + NUDGE_NCPOST consist the full name of the data file.
+
+**NUDGE_NCFILE**
+    - **Prompt:** The Varying Part of NUDGE_NCFILE Filenames
+    - **Default:** None
+    - **Description:** There can be multiple entries in NUDGE_NCFILE. NUDGE_NCPRE + NUDGE_NCFILE + NUDGE_NCPOST consist the full name of the data file.
+
+**NUDGE_FLDS**
+    - **Prompt:** Names of the Fields to Be Nudged
+    - **Default:** None
+    - **Description:** The specified fields will be used to replace the internal model fields near the lower boundary.
+
+**NUDGE_LBC**
+    - **Prompt:** Flags for Lower Boundary Replacement
+    - **Default:** None
+    - **Description:** NUDGE_LBC has the same amount of entries as NUDGE_FLDS and it specifies whether the corresponding NUDGE_FLDS will be used as the lower boundary of TIEGCM. Defaults are false.
+    - **Warning:** Valid lower boundary fields are TN, UN, VN, Z, therefore true flags in NUDGE_LBC other than those corresponding to TN, UN, VN, Z will be ignored.
+
+**NUDGE_F4D**
+    - **Prompt:** Flags for Internal Field Nudging
+    - **Default:** None
+    - **Description:** NUDGE_F4D has the same amount of entries as NUDGE_FLDS and it specifies whether the corresponding NUDGE_FLDS will be used to replace the internal TIEGCM fields near the lower boudnary. Defaults are false.
+    - **Warning:** If the corresponding flags for TN, UN, VN, Z are true in NUDGE_F4D, the flags in NUDGE_LBC should also be true to be consistent.
+
+**NUDGE_USE_REFDATE**
+    - **Prompt:** Flags for Time Specification
+    - **Default:** None
+    - **Valid Options:** [true, false]
+    - **Description:** NUDGE_USE_REFDATE specifies whether NUDGE_REFDATE will be used. Note that if NUDGE_USE_REFDATE is true, then the "time" variable in NUDGE_NCFILE will be used and "date", "datesec" will be ignored; otherwise the "time" variable will be ignored and "date", "datesec" will be used. Default is false (use "date" and "datesec").
+
+**NUDGE_REFDATE**
+    - **Prompt:** The Zero Point of the Time Variable in NUDGE_NCFILE
+    - **Default:** None
+    - **Description:** The two integers specify the year and day-of-year of the "time" variable's zero point in NUDGE_NCFILE. This is useful if the user wants to manually shift the time of external fields to perform some theoretical studies.
+
+**NUDGE_SPONGE**
+    - **Prompt:** TIEGCM Range to Nudge
+    - **Default:** None
+    - **Description:** The first number specifies the horizontal range in degree for TIEGCM to be nudged to NUDGE_NCFILE; the second number specifies the vertical range in scale height for TIEGCM to be nudged to NUDGE_NCFILE. Horizontal sponge layer is rarely used and the first number is usually 0 unless regional nudging is desired. Default is [0, 0].
+    - **Warning:** NUDGE_SPONGE should not exceed the lon/lat/lev/ilev range in NUDGE_NCFILE. If it does, the model will issue an error message and quit.
+
+**NUDGE_DELTA**
+    - **Prompt:** Exponential Decaying Factor for Relaxation
+    - **Default:** None
+    - **Description:** The first number specifies the horizontal exponential decaying factor in degree; the second number specifies the vertical exponential factor in scale height. These numbers should be set up to allow a smooth transition from external NUDGE_NCFILE fields to internal TIEGCM fields. In the transition region, the portion of external fields takes the form of exp(-(d/NUDGE_DELTA)^NUDGE_POWER) where d is the distance from the boundary in degree (horizontal) or scale height (vertical). Default is [1, 1].
+
+**NUDGE_POWER**
+    - **Prompt:** Decaying Power for Relaxation
+    - **Default:** None
+    - **Description:** The first number specifies the power of horizontal decaying factor; the second number specifies the power of vertical exponential factor. In the transition region, the portion of external fields takes the form of exp(-(d/NUDGE_DELTA)^NUDGE_POWER) where d is the distance from the boundary in degree (horizontal) or scale height (vertical). Default is [1, 1].
+
+**NUDGE_ALPHA**
+    - **Prompt:** General Relaxation Factor
+    - **Default:** None
+    - **Description:** A multiplier applied to the horizontal and vertical relaxation factor to specify the general relaxation factor. It is the portion of external fields in total fields at the boundary. Default is 0 (no nudging).
+    - **Warning:** NUDGE_ALPHA should be between 0 and 1.
 
 **other_input**
-    - **Prompt:** Other input parameters
+    - **Prompt:** Other Input Parameters
     - **Default:** [null]
     - **Warning:** Advanced usage only. Intended for users with a deep understanding of TIEGCM configurations and requirements.
 

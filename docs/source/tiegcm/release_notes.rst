@@ -84,27 +84,30 @@ Changes in Physics
 - Field-aligned ion drag is included in the momentum equation (Jiuhou Lei).
 
 **Collision Frequency**
-- In lamdas.F, collision frequency calculation now include all ion species (O+, O2+, N+, N2+ and NO+) instead of only accounting for O+, O2+, and NO+ (Haonan Wu).
+- In lamdas.F, collision frequency calculation now include all ion species (O+, O2+, N+, N2+ and NO+) instead of only accounting for O+, O2+, and NO+ in previous versions (Haonan Wu).
 
 **N(2D) Transport**
-- Minor species solver now includes N(2D) which was assumed in (photo)-chemical equilibrium, this affects N chemistry at high altitudes (z>7) (Haonan Wu).
+- Minor species solver now includes N(2D) which was assumed in (photo)-chemical equilibrium, this affects N chemistry at very high altitudes (z>7) (Haonan Wu).
 
 **Electron Heat Flux Parameterization**  
-- The parameterization scheme of electron heat flux (fed) near the equator is changed in settei (Tong Dang).
+- The parameterization scheme of electron heat flux (fed) near the equator is changed in settei (Tong Dang, Wenbin Wang, Kevin Pham).
+
+**O+ Number Flux Parameterization**
+- The parameterization scheme of O+ (opflux) near the equator is changed in oplus (Haonan Wu, Wenbin Wang)
 
 **Thermal Electron Heating Efficiency**  
 - A sixth-order polynomial is used for thermal electron heating efficiency (Yihui Cai).
 
 **Electrojet Turbulent Heating**  
-- Electrojet turbulent heating is introduced, default off (Jing Liu).
+- Electrojet turbulent heating is included, default off (Jing Liu).
 
 **Empirical SAPS**  
-- Empirical SAPS is introduced, default off (Wenbin Wang).
+- Empirical SAPS is included, default off (Wenbin Wang).
 
 **Eclipse Solar EUV Masking**  
-- Support for eclipse solar EUV masking is added (Jiuhou Lei).
+- Support for eclipse solar EUV masking is added (Tong Dang, Jiuhou Lei).
 
 **Lower Boundary Forcing by External Data**  
-- Support for lower boundary forcing by external data (SD nudging, Haonan Wu).
+- Support for lower boundary forcing by external data (SD nudging) (Haonan Wu, Xian Lu).
 
 For any questions or further information, please contact the discussion group email list at tgcmgroup@ucar.edu.
