@@ -9,7 +9,7 @@ Functional Description - TIE-GCM
 
 The NCAR Thermosphere-Ionosphere-Electrodynamics General Circulation Model (TIE-GCM) is a comprehensive, first-principles, three-dimensional, non-linear representation of the coupled thermosphere and ionosphere system that includes a self-consistent solution of the middle and low-latitude dynamo field.
 
-The model solves the three-dimensional momentum, energy and continuity equations for neutral and ion species at each time step, using a semi-implicit, fourth-order, centered finite difference scheme on each pressure surface in a staggered vertical grid. It can be run in either serial or parallel mode on a variety of platforms, including Linux workstations and supercomputers. The time step is typically 120 s.
+The model solves the three-dimensional momentum, energy and continuity equations for neutral and ion species at each time step, using a semi-implicit, fourth-order, centered finite difference scheme on each pressure surface in a staggered vertical grid. It can be run in either serial or parallel mode on a variety of platforms, including Linux workstations and supercomputers. The time step is typically sub minutes.
 
 Grid Parameters
 ---------------
@@ -19,7 +19,7 @@ The standard low-resolution grid parameters are:
 - Spherical geographic coordinates
 - Latitude: -87.5° to 87.5° in 5° increments
 - Longitude: -180° to 180° in 5° increments
-- Altitude: Pressure levels from -7 to +7 in increments of H/2.
+- Altitude: Pressure levels from -7 to +7 in increments of 1/2 scale height.
 - Lower boundary: ~97 km
 - Upper boundary: ~500 to ~700 km depending on solar activity
 
@@ -29,7 +29,7 @@ Strengths
 - Accurate, self-consistent calculation of coupled thermosphere and ionosphere system
 - Calculates all important aeronomic parameters and minor species
 - Solar forcing can be specified by proxy models or measurements
-- Auroral forcing can be specified by empirical relationships, by output from the AMIE procedure, or by a magnetosphere model such as the LFM.
+- Auroral forcing can be specified by empirical relationships, by output from the AMIE procedure, or by a magnetosphere model such as the GAMERA.
 
 Assumptions
 -----------
@@ -50,10 +50,10 @@ Output fields specified in 3 spatial dimensions plus time:
 - GEOPOTENTIAL: Height of pressure surfaces (cm)
 - TEMPERATURE: Neutral, ion, electron (K)
 - NEUTRAL WINDS: zonal, meridional, vertical (m/s)
-- COMPOSITION: O, O2, NO, N(4S), N(2D), O+, O2+, N2+, NO+, N+, Ne
+- COMPOSITION: O2, O1, He, N2, N(2D), N(4S), NO, Ar, O+, O2+, N+, N2+, NO+, Ne
 - POTENTIAL: In geomagnetic and geographic coordinates
 
 Hardware and Software Requirements
 ----------------------------------
 
-The TIEGCM can be run in either parallel or serial mode on a variety of platforms, including IBM systems running AIX, Linux cluster systems, and Linux workstations. The code is written in standard FORTRAN-90 and requires MPI and netCDF libraries. Input and output files are in netCDF format.
+The TIEGCM can be run in either parallel or serial mode on a variety of platforms, including Linux cluster systems, and Linux workstations. The code is written in standard FORTRAN-90 and requires MPI and netCDF libraries. Input and output files are in netCDF format.
